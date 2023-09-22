@@ -7,13 +7,14 @@ CC = g++
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	@printf "megaphone compiled\n"
 
 clean:
-	rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean:
-	rm -f $(NAME) $(OBJ)
+	@rm -f $(NAME) $(OBJ)
 
 re: fclean all
 
