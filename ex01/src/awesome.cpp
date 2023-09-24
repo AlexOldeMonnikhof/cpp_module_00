@@ -1,9 +1,9 @@
-#include "awesome.hpp"
-#include <iostream>
+#include "../inc/phonebook.hpp"
 
 int	main()
 {
 	std::string input;
+
 	while (1)
 	{
 		std::cin >> input;

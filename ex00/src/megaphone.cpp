@@ -2,8 +2,7 @@
 
 int	main(int argc, char **argv)
 {
-	char	c;
-	int		i, j;
+	int	i, j;
 
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
@@ -12,10 +11,7 @@ int	main(int argc, char **argv)
 	{
 		j = 0;
 		while (argv[i][j])
-		{
-			c = toupper(argv[i][j++]);
-			std::cout << c;
-		}
+			std::cout << (char)toupper(argv[i][j++]);
 		i++;
 	}
 	std::cout << std::endl;

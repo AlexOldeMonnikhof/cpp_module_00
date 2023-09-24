@@ -1,6 +1,8 @@
-NAME = awesome
+NAME = phonebook
 SRC = awesome.cpp commands.cpp
-OBJ = $(SRC:.cpp=.o)
+VPATH = src
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
+OBJ_DIR = obj
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
@@ -8,14 +10,21 @@ all: $(NAME)
 
 $(NAME) : $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-	@printf "awesome compiled\n"
+	@printf "Phonebook compiled\n"
+
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+	@$(CC) $(FLAGS) -o $@ -c  $<
+
+$(OBJ_DIR):
+	@mkdir $(OBJ_DIR)
 
 clean:
-	@rm -f $(OBJ)
+	@rm -rf $(OBJ_DIR)
 
 fclean:
-	@rm -f $(NAME) $(OBJ)
+	@rm -rf $(OBJ_DIR) $(NAME)
 
-re: fclean all
+re:
+	@fclean all
 
-PHONE: all clean fclean re
+PHONY: all clean fclean re
