@@ -10,7 +10,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-	@printf "megaphone compiled\n"
+	@printf "Megaphone compiled\n"
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -o $@ -c $<
