@@ -1,9 +1,10 @@
 NAME = phonebook
-SRC = awesome.cpp commands.cpp
+SRC = main.cpp commands.cpp get_set.cpp utils.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS =
+# FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
 all: $(NAME)
@@ -24,7 +25,6 @@ clean:
 fclean:
 	@rm -rf $(OBJ_DIR) $(NAME)
 
-re:
-	@fclean all
+re: fclean all
 
 PHONY: all clean fclean re
