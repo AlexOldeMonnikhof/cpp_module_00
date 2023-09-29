@@ -1,19 +1,22 @@
 #include <iostream>
 
+using	std::cout;
+using	std::endl;
+
 int	main(int argc, char **argv)
 {
 	int	i, j;
 
 	if (argc == 1)
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+		cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 	i = 1;
 	while (argv[i])
 	{
 		j = 0;
 		while (argv[i][j])
-			std::cout << (char)toupper(argv[i][j++]);
+			cout << (char)toupper(argv[i][j++]);
 		i++;
 	}
-	std::cout << std::endl;
+	cout << endl;
 	return (0);
 }
