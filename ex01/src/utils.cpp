@@ -1,6 +1,6 @@
 #include "../inc/phonebook.hpp"
 
-bool	is_valid_word(std::string str)
+bool	is_valid_word(string str)
 {
 	int	i;
 
@@ -14,7 +14,7 @@ bool	is_valid_word(std::string str)
 	return (true);
 }
 
-bool	is_valid_number(std::string str)
+bool	is_valid_number(string str)
 {
 	int	i;
 

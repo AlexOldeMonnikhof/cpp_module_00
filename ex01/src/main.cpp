@@ -2,18 +2,22 @@
 
 int	main()
 {
-	std::string input;
+	string	input;
 
 	while (1)
 	{
-		std::getline(std::cin, input);
+		getline(cin, input);
+		if (cin.eof())
+		{
+			cout << "EOF reached. (Quitting program)" << endl;
+			return (1);
+		}
 		if (input == "ADD")
 			new_contact();
 		else if (input == "SEARCH")
 			display_contact();
 		else if (input == "EXIT")
-			exit_program();
-		input = "lol";
+			exit(0);
 	}
 	return (0);
 }

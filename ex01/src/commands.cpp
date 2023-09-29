@@ -15,10 +15,10 @@ void	new_contact()
 
 void	display_contact()
 {
-	std::cout << "display" <<std::endl;
+	cout << "display" << endl;
 }
 
 void	exit_program()
 {
-	std::cout << "exit" <<std::endl;
+	cout << "exit" << endl;
 }
