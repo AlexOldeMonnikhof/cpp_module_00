@@ -2,7 +2,8 @@
 
 int	main()
 {
-	string	input;
+	Phonebook	pb;
+	string		input;
 
 	while (1)
 	{
@@ -13,9 +14,9 @@ int	main()
 			return (1);
 		}
 		if (input == "ADD")
-			new_contact();
+			new_contact(&pb);
 		else if (input == "SEARCH")
-			display_contact();
+			display_contact(&pb);
 		else if (input == "EXIT")
 			exit(0);
 	}

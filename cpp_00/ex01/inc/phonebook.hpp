@@ -12,6 +12,7 @@ using	std::string;
 
 class	Contact{
 public:
+	Contact(){};
 	void	set_first_name(void);
 	void	set_last_name(void);
 	void	set_nickname(void);
@@ -32,11 +33,14 @@ private:
 };
 
 class	Phonebook{
+public:
+	Phonebook();
 	Contact	contacts[8];
+	int		index;
 };
 
-void	new_contact();
-void	display_contact();
+void	new_contact(Phonebook *pb);
+void	display_contact(Phonebook *pb);
 void	exit_program();
 
 //UTILS
