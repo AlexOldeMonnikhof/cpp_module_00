@@ -14,7 +14,7 @@ $(NAME) : $(OBJ)
 	@printf "Phonebook compiled\n"
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@$(CC) $(FLAGS) -o $@ -c  $<
+	@$(CC) $(FLAGS) -o $@ -c $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)

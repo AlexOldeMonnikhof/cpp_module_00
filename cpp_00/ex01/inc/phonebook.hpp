@@ -1,50 +1,35 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
+# include "Contact.hpp"
+
 # include <iostream>
 # include <cstring>
 
 using	std::cout;
 using	std::endl;
 using	std::cin;
-using	std::string;
 
-
-class	Contact{
+class	PhoneBook{
 public:
-	Contact(){};
-	void	set_first_name(void);
-	void	set_last_name(void);
-	void	set_nickname(void);
-	void	set_phone_number(void);
-	void	set_secret(void);
-	string	get_first_name(void);
-	string	get_last_name(void);
-	string	get_nickname(void);
-	string	get_phone_number(void);
-	string	get_secret(void);
+	PhoneBook();
+	void	add_contact();
+	void	display_phonebook();
+	void	display_row(int column_index);
+	void	display_contact(int i);
+	void	change_index();
+	int		get_index();
 
 private:
-	string	first_name;
-	string	last_name;
-	string	nickname;
-	string	phone_number;
-	string	secret;
-};
-
-class	Phonebook{
-public:
-	Phonebook();
 	Contact	contacts[8];
-	int		index;
+	int		current_index;
+	int		contact_count;
 };
-
-void	new_contact(Phonebook *pb);
-void	display_contact(Phonebook *pb);
-void	exit_program();
 
 //UTILS
 bool	is_valid_word(string str);
 bool	is_valid_number(string str);
+void	print_msg(string msg);
+void	display_prompt();
 
 #endif

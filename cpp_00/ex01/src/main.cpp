@@ -1,10 +1,12 @@
-#include "../inc/phonebook.hpp"
+#include "../inc/PhoneBook.hpp"
 
 int	main()
 {
-	Phonebook	pb;
+	PhoneBook	pb;
 	string		input;
 
+	print_msg("Welcome to My Awesome PhoneBook!");
+	print_msg("\'ADD\' and \'SEARCH\' contacts, or \'EXIT\'.\n");
 	while (1)
 	{
 		getline(cin, input);
@@ -14,11 +16,14 @@ int	main()
 			return (1);
 		}
 		if (input == "ADD")
-			new_contact(&pb);
+			pb.add_contact();
 		else if (input == "SEARCH")
-			display_contact(&pb);
+			pb.display_phonebook();
 		else if (input == "EXIT")
-			exit(0);
+			break ;
+		else
+			print_msg("Command not found...\nExisting commands: \'ADD\', \'SEARCH\' or \'EXIT\'.\n");
 	}
+	print_msg("Exiting...");
 	return (0);
 }
