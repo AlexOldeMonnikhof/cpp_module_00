@@ -3,8 +3,7 @@ SRC = main.cpp commands.cpp get_set.cpp utils.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
-FLAGS =
-# FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
 all: $(NAME)

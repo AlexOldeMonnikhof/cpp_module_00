@@ -41,11 +41,11 @@ void	print_msg(string msg)
 void	display_prompt()
 {
 	cout << endl;
-	for (size_t i = 0; i < 45; i++)
+	for (int i = 0; i < 45; i++)
 		cout << "-";
 	cout << endl;
 	cout << "|   INDEX  |FIRST NAME| LAST NAME| NICKNAME |" << endl;
-	for (size_t i = 0; i < 45; i++)
+	for (int i = 0; i < 45; i++)
 		cout << "-";
 	cout << endl;
 }
@@ -70,7 +70,7 @@ void	PhoneBook::display_row(int column_index)
 	Contact	*current_contact;
 
 	cout << "|";
-	for (size_t i = 0; i < 9; i++)
+	for (int i = 0; i < 9; i++)
 		cout << " ";
 	cout << column_index;
 	cout << "|";
@@ -79,9 +79,9 @@ void	PhoneBook::display_row(int column_index)
 	if (len > 10)
 		len = 10;
 	white_spaces = 10 - len;
-	for (size_t i = 0; i < white_spaces; i++)
+	for (int i = 0; i < white_spaces; i++)
 		cout << " ";
-	for (size_t i = 0; i < len; i++)
+	for (int i = 0; i < len; i++)
 	{
 		if (i != 9 || current_contact->get_first_name().size() <= 10)
 			cout << current_contact->get_first_name()[i];
@@ -93,9 +93,9 @@ void	PhoneBook::display_row(int column_index)
 	if (len > 10)
 		len = 10;
 	white_spaces = 10 - len;
-	for (size_t i = 0; i < white_spaces; i++)
+	for (int i = 0; i < white_spaces; i++)
 		cout << " ";
-	for (size_t i = 0; i < len; i++)
+	for (int i = 0; i < len; i++)
 	{
 		if (i != 9 || current_contact->get_last_name().size() <= 10)
 			cout << current_contact->get_last_name()[i];
@@ -107,9 +107,9 @@ void	PhoneBook::display_row(int column_index)
 	if (len > 10)
 		len = 10;
 	white_spaces = 10 - len;
-	for (size_t i = 0; i < white_spaces; i++)
+	for (int i = 0; i < white_spaces; i++)
 		cout << " ";
-	for (size_t i = 0; i < len; i++)
+	for (int i = 0; i < len; i++)
 	{
 		if (i != 9 || current_contact->get_nickname().size() <= 10)
 			cout << current_contact->get_nickname()[i];
@@ -117,7 +117,7 @@ void	PhoneBook::display_row(int column_index)
 			cout << ".";
 	}
 	cout << "|" << endl;
-	for (size_t i = 0; i < 45; i++)
+	for (int i = 0; i < 45; i++)
 		cout << "-";
 	cout << endl;
 }

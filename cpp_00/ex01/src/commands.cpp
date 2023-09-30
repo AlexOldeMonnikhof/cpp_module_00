@@ -21,7 +21,7 @@ void	PhoneBook::display_phonebook()
 {
 	string	input;
 	int		column_index;
-	int		search_index;
+	int		search_index = 0;
 
 	if (!this->contact_count)
 	{
