@@ -21,7 +21,6 @@ void	PhoneBook::display_phonebook()
 {
 	string	input;
 	int		column_index;
-	int		search_index = 0;
 
 	if (!this->contact_count)
 	{
@@ -36,10 +35,8 @@ void	PhoneBook::display_phonebook()
 	getline(cin, input);
 	if (cin.eof())
 		return;
-	if (is_valid_number(input))
-		search_index = stoi(input);
-	if (search_index < 0 || search_index >= this->contact_count)
+	if (!is_valid_number(input) || stoi(input) >= this->contact_count)
 		print_msg("invalid index. Stopping the search...\n");
 	else
-		display_contact(search_index);
+		display_contact(stoi(input));
 }

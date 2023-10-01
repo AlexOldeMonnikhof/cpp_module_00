@@ -19,7 +19,7 @@ void	PhoneBook::change_index()
 	if (this->current_index == 8)
 	{
 		print_msg("Warning: maximum (8) amount of contacts reached!");
-		print_msg("The oldest contact will be overwritten the next time!");
+		print_msg("The oldest contact will be overwritten the next time!\n");
 		this->current_index = 0;
 	}
 }
