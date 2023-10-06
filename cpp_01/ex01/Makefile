@@ -3,7 +3,7 @@ SRC = main.cpp Zombie.cpp zombieHorde.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
-FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = g++
 
 all: $(NAME)
