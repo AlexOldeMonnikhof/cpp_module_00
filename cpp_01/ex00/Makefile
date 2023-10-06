@@ -1,16 +1,16 @@
-NAME = brainz
+NAME = zombie
 SRC = main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 CC = g++
 
 all: $(NAME)
 
 $(NAME) : $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
-	@printf "Brainz compiled\n"
+	@printf "$(NAME) compiled\n"
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -o $@ -c $<
