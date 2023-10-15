@@ -1,5 +1,5 @@
 NAME = harl
-SRC = main.cpp Replace.cpp
+SRC = main.cpp Harl.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
