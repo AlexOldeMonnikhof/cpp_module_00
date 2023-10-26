@@ -44,11 +44,11 @@ float	Fixed::toFloat(void) const
 	return ((float)this->value / float(1 << this->fractionalBits));
 }
 
-int		Fixed::toInt(void) const
+int	Fixed::toInt(void) const
 {
 	return (this->value >> fractionalBits);
 }
-	
+
 void	Fixed::setRawBits(int const raw)
 {
 	this->value = raw;
@@ -60,7 +60,7 @@ int	Fixed::getRawBits(void) const
 }
 
 //show ints as floats since we dont know if we have an int or float
-ostream& operator<<(ostream& stream, const Fixed& other)
+ostream&	operator<<(ostream& stream, const Fixed& other)
 {
 	stream << other.toFloat();
 	return (stream);
