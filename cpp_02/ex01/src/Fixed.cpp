@@ -14,6 +14,7 @@ Fixed::Fixed(const int input)
 	value = input << fractionalBits;
 }
 
+//multiplying by 256 (1 << 8) but needing to brackets for proper typecast
 Fixed::Fixed(const float input)
 {
 	cout << "Float constructor called" << endl;
@@ -39,9 +40,10 @@ Fixed& Fixed::operator=(const Fixed& other)
 	return (*this);
 }
 
+//deviding by 256 (1 << 8) but needing to brackets for proper typecast
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->value / float(1 << this->fractionalBits));
+	return ((float)value / float(1 << fractionalBits));
 }
 
 int	Fixed::toInt(void) const
