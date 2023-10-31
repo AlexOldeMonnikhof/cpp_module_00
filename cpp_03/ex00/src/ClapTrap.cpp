@@ -1,11 +1,11 @@
 #include "../inc/ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : hp(10), energy(10), dmg(0), name("unnamed")
+ClapTrap::ClapTrap() : name("unnamed"), hp(10), energy(10), dmg(0)
 {
 	cout << "An unnamed ClapTrap has been created!" << endl;
 }
 
-ClapTrap::ClapTrap(string name) : hp(10), energy(10), dmg(0), name(name)
+ClapTrap::ClapTrap(string name) : name(name), hp(10), energy(10), dmg(0)
 {
 	cout << "A ClapTrap named "<< name << " has been created!" << endl;
 }
