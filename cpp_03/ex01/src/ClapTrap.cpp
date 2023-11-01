@@ -1,39 +1,31 @@
 #include "../inc/ClapTrap.hpp"
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() : name("unnamed"), hp(100), energy(50), dmg(20)
 {
 	cout << "An unnamed ClapTrap has been created!" << endl;
-	this->name = "unnamed";
-	hp = 10;
-	energy = 10;
-	dmg = 0;
 }
 
-ClapTrap::ClapTrap(string name)
+ClapTrap::ClapTrap(string name) : name(name), hp(100), energy(50), dmg(20)
 {
 	cout << "A ClapTrap named "<< name << " has been created!" << endl;
-	this->name = name;
-	hp = 10;
-	energy = 10;
-	dmg = 0;
 }
 
 ClapTrap::~ClapTrap()
 {
-	cout << name << " has been destroyed!" << endl;
+	cout << "ClapTrap " << name << " has been destroyed!" << endl;
 }
 
 void	ClapTrap::attack(const std::string& target)
 {
 	if (hp > 0 && energy > 0)
 	{
-		cout << name << " attacks " << target << " causing " << dmg << " points of damage!" << endl;
+		cout << "ClapTrap " << name << " attacks " << target << " causing " << dmg << " points of damage!" << endl;
 		energy--;
 	}
 	else if (hp == 0)
-		cout << name << " can not attack due to no hit points!" << endl;
+		cout << "ClapTrap " << name << " can not attack due to no hit points!" << endl;
 	else
-		cout << name << " can not attack due to no energy points!" << endl;
+		cout << "ClapTrap " << name << " can not attack due to no energy points!" << endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
