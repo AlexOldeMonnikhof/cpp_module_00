@@ -8,6 +8,7 @@ using std::endl;
 
 class	Zombie{
 public:
+	Zombie();
 	~Zombie();
 	void	set_name(std::string name);
 	void	announce(void);

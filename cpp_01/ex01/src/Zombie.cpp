@@ -1,5 +1,10 @@
 #include "../inc/Zombie.hpp"
 
+Zombie::Zombie()
+{
+
+}
+
 Zombie::~Zombie()
 {
 	cout << name << " destroyed" << endl;
