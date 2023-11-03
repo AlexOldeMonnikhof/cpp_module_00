@@ -56,6 +56,11 @@ int	Fixed::getRawBits(void) const
 	return (this->value);
 }
 
+void	Fixed::setRawBits(int const raw)
+{
+	this->value = raw;
+}
+
 //show ints as floats since we dont know if we have an int or float
 ostream&	operator<<(ostream& stream, const Fixed& other)
 {

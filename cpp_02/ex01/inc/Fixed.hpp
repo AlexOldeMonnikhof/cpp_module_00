@@ -22,6 +22,7 @@ public:
 	float	toFloat(void) const;
 	int		toInt(void) const;
 	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
 };
 
 ostream& operator<<(ostream& stream, const Fixed& other);

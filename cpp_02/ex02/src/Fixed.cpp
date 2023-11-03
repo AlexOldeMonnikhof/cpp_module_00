@@ -4,37 +4,32 @@ const int	Fixed::fractionalBits = 8;
 
 Fixed::Fixed()
 {
-	cout << "Default constructor called" << endl;
 	value = 0;
 }
 
 Fixed::Fixed(const int input)
 {
-	cout << "Int constructor called" << endl;
 	value = input << fractionalBits;
 }
 
 //multiplying by 256 (1 << 8) but needing to brackets for proper typecast
 Fixed::Fixed(const float input)
 {
-	cout << "Float constructor called" << endl;
 	value = roundf(input * (1 << fractionalBits));
 }
 
 Fixed::~Fixed()
 {
-	cout << "Destructor called" << endl;
+
 }
 
 Fixed::Fixed(const Fixed& other)
 {
-	cout << "Copy constructor called" << endl;
 	*this = other;
 }
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
-	cout << "Copy assignment operator called" << endl;
 	if (this != &other)
 		this->value = other.getRawBits();
 	return (*this);
@@ -108,6 +103,64 @@ float	Fixed::operator/(Fixed other) const
 {
 	return (this->toFloat() / other.toFloat());
 }
+
+//in- and decrements
+Fixed	Fixed::operator++()
+{
+	value++;
+	return (*this);
+}
+
+Fixed	Fixed::operator--()
+{
+	value--;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed	tmp = *this;
+	value++;
+	return (tmp);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	tmp = *this;
+	value--;
+	return (tmp);
+}
+
+//min/max
+
+Fixed&	Fixed::min(Fixed& f1, Fixed& f2)
+{
+	if (f1.toFloat() <= f2.toFloat())
+		return (f1);
+	return (f2);
+}
+
+const Fixed&	Fixed::min(const Fixed& f1, const Fixed& f2)
+{
+	if (f1.toFloat() <= f2.toFloat())
+		return (f1);
+	return (f2);
+}
+
+Fixed&	Fixed::max(Fixed& f1, Fixed& f2)
+{
+	if (f1.toFloat() >= f2.toFloat())
+		return (f1);
+	return (f2);
+}
+
+const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
+{
+	if (f1.toFloat() >= f2.toFloat())
+		return (f1);
+	return (f2);
+}
+
 
 //show ints as floats since we dont know if we have an int or float
 ostream&	operator<<(ostream& stream, const Fixed& other)

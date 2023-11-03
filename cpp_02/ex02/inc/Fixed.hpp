@@ -34,6 +34,16 @@ public:
 	float	operator-(Fixed other) const;
 	float	operator*(Fixed other) const;
 	float	operator/(Fixed other) const;
+	//in- and decrements
+	Fixed	operator++();
+	Fixed	operator--();
+	Fixed	operator++(int);
+	Fixed	operator--(int);
+	//min/max
+	static Fixed&			min(Fixed& f1, Fixed& f2);
+	static const Fixed&		min(const Fixed& f1, const Fixed& f2);
+	static Fixed&			max(Fixed& f1, Fixed& f2);
+	static const Fixed&		max(const Fixed& f1, const Fixed& f2);
 };
 
 ostream& operator<<(ostream& stream, const Fixed& other);
