@@ -15,8 +15,13 @@ public:
 	Animal();
 //destructor
 	virtual ~Animal();
-//method
+//copy constructor
+	Animal(const Animal& other);
+//operator overload
+	Animal&	operator=(const Animal& other);
+//methods
 	virtual void	makeSound() const;
+	virtual string	getType() const;
 };
 
 #endif

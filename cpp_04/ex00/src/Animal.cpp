@@ -3,10 +3,32 @@
 Animal::Animal()
 {
 	type = "basic animal";
-	cout << "An " << type << " has been created." << endl;
+	cout << "An basic animal has been created." << endl;
 }
 
 Animal::~Animal()
 {
-	cout << "An " << type << " has been destroyed." << endl;
+	cout << "An basic animal has been destroyed." << endl;
+}
+
+Animal::Animal(const Animal& other)
+{
+	type = other.type;
+}
+
+Animal&	Animal::operator=(const Animal& other)
+{
+	if (this != &other)
+		type = other.type;
+	return (*this);
+}
+
+void	Animal::makeSound() const
+{
+	cout << "Basic animal sounds" << endl;
+}
+
+string	Animal::getType() const
+{
+	return (type);
 }

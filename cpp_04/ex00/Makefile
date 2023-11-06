@@ -1,5 +1,5 @@
 NAME = animal
-SRC = main.cpp
+SRC = main.cpp Animal.cpp Cat.cpp Dog.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
