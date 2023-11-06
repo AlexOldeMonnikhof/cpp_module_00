@@ -8,8 +8,12 @@ public:
 //constructors
 	FlagTrap();
 	FlagTrap(string name);
-//destructorr
+//destructor
 	~FlagTrap();
+//copy constructor
+	FlagTrap(const FlagTrap& other);
+//operator overfloat
+	FlagTrap& operator=(const FlagTrap& other);
 //method
 	void	highFivesGuys(void);
 };

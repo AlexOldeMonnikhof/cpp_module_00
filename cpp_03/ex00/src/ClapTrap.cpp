@@ -15,6 +15,24 @@ ClapTrap::~ClapTrap()
 	cout << name << " has been destroyed!" << endl;
 }
 
+ClapTrap::ClapTrap(const ClapTrap& other)
+{
+	cout << "Copy constructor has been called." << endl;
+	*this = other;
+}
+
+ClapTrap& ClapTrap::operator=(const ClapTrap& other)
+{
+	if (this != &other)
+	{
+		name = other.name;
+		hp = other.hp;
+		energy = other.energy;
+		dmg = other.dmg;
+	}
+	return (*this);
+}
+
 void	ClapTrap::attack(const std::string& target)
 {
 	if (hp > 0 && energy > 0)

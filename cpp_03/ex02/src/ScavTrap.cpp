@@ -16,6 +16,24 @@ ScavTrap::~ScavTrap()
 	cout << "ScavTrap " << name << " has been destroyed!" << endl;
 }
 
+ScavTrap::ScavTrap(const ScavTrap& other)
+{
+	cout << "Copy constructor has been called." << endl;
+	*this = other;
+}
+
+ScavTrap& ScavTrap::operator=(const ScavTrap& other)
+{
+	if (this != &other)
+	{
+		name = other.name;
+		hp = other.hp;
+		energy = other.energy;
+		dmg = other.dmg;
+	}
+	return (*this);
+}
+
 void	ScavTrap::attack(const std::string& target)
 {
 	if (hp > 0 && energy > 0)

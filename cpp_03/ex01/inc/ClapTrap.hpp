@@ -19,6 +19,10 @@ public:
 	ClapTrap(string name);
 //destructor
 	~ClapTrap();
+//copy constructor
+	ClapTrap(const ClapTrap& other);
+//operator overload
+	ClapTrap& operator=(const ClapTrap& other);
 //methods
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
