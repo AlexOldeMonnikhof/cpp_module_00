@@ -4,7 +4,7 @@ VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
 FLAGS = -Wall -Wextra -Werror -std=c++98
-CC = g++
+CC = c++
 
 all: $(NAME)
 
