@@ -14,7 +14,7 @@ int	main()
 
 	/*references have to be initizalized when declared and can not change or be NULL and
 	that makes references more readable and safer than pointers,*/
-	string	&stringREF = str;
+	string&	stringREF = str;
 
 	cout << "Address of str =\t\t" << &str << endl;
 	cout << "Address held by stringPTR =\t" << stringPTR << endl;
