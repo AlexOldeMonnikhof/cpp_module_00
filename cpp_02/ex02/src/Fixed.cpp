@@ -20,7 +20,7 @@ Fixed::Fixed(const float input)
 
 Fixed::~Fixed()
 {
-
+	cout << "Destroyed the Fixed Point class" << endl;
 }
 
 Fixed::Fixed(const Fixed& other)
@@ -105,6 +105,7 @@ float	Fixed::operator/(Fixed other) const
 }
 
 //in- and decrements
+//increment with no parameter == pre-increment
 Fixed	Fixed::operator++()
 {
 	value++;
@@ -117,6 +118,7 @@ Fixed	Fixed::operator--()
 	return (*this);
 }
 
+//increment with parameter (int) == post-increment
 Fixed	Fixed::operator++(int)
 {
 	Fixed	tmp = *this;
@@ -132,7 +134,6 @@ Fixed	Fixed::operator--(int)
 }
 
 //min/max
-
 Fixed&	Fixed::min(Fixed& f1, Fixed& f2)
 {
 	if (f1.toFloat() <= f2.toFloat())
@@ -160,7 +161,6 @@ const Fixed&	Fixed::max(const Fixed& f1, const Fixed& f2)
 		return (f1);
 	return (f2);
 }
-
 
 //show ints as floats since we dont know if we have an int or float
 ostream&	operator<<(ostream& stream, const Fixed& other)
