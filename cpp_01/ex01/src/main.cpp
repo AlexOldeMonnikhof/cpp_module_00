@@ -8,7 +8,7 @@ int	main()
 	if (N < 0)
 	{
 		cout << "must use positive N..." << endl;
-		return;
+		return (1);
 	}
 	horde = zombieHorde(N, "John");
 	for (int i = 0; i < N; i++)
