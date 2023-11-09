@@ -25,7 +25,7 @@ public:
 	void	setRawBits(int const raw);
 };
 
-ostream& operator<<(ostream& stream, const Fixed& other);
+ostream&	operator<<(ostream& stream, const Fixed& other);
 
 
 #endif
