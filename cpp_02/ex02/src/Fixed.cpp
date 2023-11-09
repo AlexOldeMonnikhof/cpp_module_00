@@ -20,7 +20,7 @@ Fixed::Fixed(const float input)
 
 Fixed::~Fixed()
 {
-	cout << "Destroyed the Fixed Point class" << endl;
+
 }
 
 Fixed::Fixed(const Fixed& other)
