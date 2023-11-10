@@ -3,20 +3,16 @@
 
 # include <iostream>
 
-using std::cout;
-using std::endl;
-using std::string;
-
 class ClapTrap{
 private:
-	string			name;
+	std::string		name;
 	unsigned int	hp;
 	unsigned int	energy;
 	unsigned int	dmg;
 public:
 //constructors
 	ClapTrap();
-	ClapTrap(string name);
+	ClapTrap(std::string name);
 //destructor
 	~ClapTrap();
 //copy constructor
