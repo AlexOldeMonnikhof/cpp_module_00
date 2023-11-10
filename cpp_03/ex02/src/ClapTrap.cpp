@@ -1,11 +1,11 @@
 #include "../inc/ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : name("unnamed"), hp(100), energy(50), dmg(20)
+ClapTrap::ClapTrap() : name("unnamed"), hp(100), energy(50), dmg(30)
 {
 	std::cout << "An unnamed ClapTrap has been created!" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : name(name), hp(100), energy(50), dmg(20)
+ClapTrap::ClapTrap(std::string name) : name(name), hp(100), energy(50), dmg(30)
 {
 	std::cout << "A ClapTrap named "<< name << " has been created!" << std::endl;
 }
