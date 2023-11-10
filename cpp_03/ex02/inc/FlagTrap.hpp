@@ -7,7 +7,7 @@ class FlagTrap : public ClapTrap{
 public:
 //constructors
 	FlagTrap();
-	FlagTrap(string name);
+	FlagTrap(std::string name);
 //destructor
 	~FlagTrap();
 //copy constructor

@@ -9,7 +9,7 @@ private:
 public:
 //constructors
 	ScavTrap();
-	ScavTrap(string name);
+	ScavTrap(std::string name);
 //destructor
 	~ScavTrap();
 //copy constructor

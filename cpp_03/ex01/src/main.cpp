@@ -7,7 +7,7 @@ int	main()
 	ClapTrap clap2;
 
 	clap2.attack("bob");
-	for (size_t i = 0; i < 50; i++)
+	for (size_t i = 0; i < 51; i++)
 		scav1.attack("josh");
 	scav1.guardGate();
 	scav1.guardGate();

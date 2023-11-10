@@ -3,17 +3,17 @@
 
 FlagTrap::FlagTrap() : ClapTrap()
 {
-	cout << "An unnamed FlagTrap has been created!" << endl;
+	std::cout << "An unnamed FlagTrap has been created!" << std::endl;
 }
 
-FlagTrap::FlagTrap(string name) : ClapTrap(name)
+FlagTrap::FlagTrap(std::string name) : ClapTrap(name)
 {
-	cout << "A FlagTrap named "<< name << " has been created!" << endl;
+	std::cout << "A FlagTrap named "<< name << " has been created!" << std::endl;
 }
 
 FlagTrap::~FlagTrap()
 {
-	cout << "FlagTrap " << name << " has been destroyed!" << endl;
+	std::cout << "FlagTrap " << name << " has been destroyed!" << std::endl;
 }
 
 FlagTrap::FlagTrap(const FlagTrap& other)
@@ -35,5 +35,5 @@ FlagTrap&	FlagTrap::operator=(const FlagTrap& other)
 
 void	FlagTrap::highFivesGuys(void)
 {
-	cout << "FlagTrap " << name << " wants some highfives!" << endl;
+	std::cout << "FlagTrap " << name << " wants some highfives!" << std::endl;
 }

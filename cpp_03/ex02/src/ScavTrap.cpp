@@ -3,22 +3,22 @@
 
 ScavTrap::ScavTrap() : ClapTrap(), gateMode(false)
 {
-	cout << "An unnamed ScavTrap has been created!" << endl;
+	std::cout << "An unnamed ScavTrap has been created!" << std::endl;
 }
 
-ScavTrap::ScavTrap(string name) : ClapTrap(name), gateMode(false)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name), gateMode(false)
 {
-	cout << "A ScavTrap named "<< name << " has been created!" << endl;
+	std::cout << "A ScavTrap named "<< name << " has been created!" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
 {
-	cout << "ScavTrap " << name << " has been destroyed!" << endl;
+	std::cout << "ScavTrap " << name << " has been destroyed!" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& other)
 {
-	cout << "Copy constructor has been called." << endl;
+	std::cout << "Copy constructor has been called." << std::endl;
 	*this = other;
 }
 
@@ -38,25 +38,25 @@ void	ScavTrap::attack(const std::string& target)
 {
 	if (hp > 0 && energy > 0)
 	{
-		cout << "ScavTrap " << name << " attacks " << target << " causing " << dmg << " points of damage!" << endl;
+		std::cout << "ScavTrap " << name << " attacks " << target << " causing " << dmg << " points of damage!" << std::endl;
 		energy--;
 	}
 	else if (hp == 0)
-		cout << "ScavTrap " << name << " can not attack due to no hit points!" << endl;
+		std::cout << "ScavTrap " << name << " can not attack due to no hit points!" << std::endl;
 	else
-		cout << "ScavTrap " << name << " can not attack due to no energy points!" << endl;
+		std::cout << "ScavTrap " << name << " can not attack due to no energy points!" << std::endl;
 }
 
 void	ScavTrap::guardGate()
 {
 	if (gateMode == false)
 	{
-		cout << "ScavTrap " << name << " is now in Gate keeper mode!" << endl;
+		std::cout << "ScavTrap " << name << " is now in Gate keeper mode!" << std::endl;
 		gateMode = true;
 	}
 	else
 	{
-		cout << "ScavTrap " << name << " is now out of Gate keeper mode!" << endl;
+		std::cout << "ScavTrap " << name << " is now out of Gate keeper mode!" << std::endl;
 		gateMode = false;
 	}
 }
