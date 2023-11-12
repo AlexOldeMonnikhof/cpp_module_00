@@ -3,13 +3,9 @@
 
 # include <iostream>
 
-using std::cout;
-using std::endl;
-using std::string;
-
 class Brain{
 private:
-	string	ideas[100];
+	std::string	ideas[100];
 public:
 //constructor
 	Brain();
@@ -20,7 +16,7 @@ public:
 //assignment operator
 	Brain&	operator=(const Brain& other);
 //method
-	string	getIdea(int i) const;
+	std::string	getIdea(int i) const;
 };
 
 #endif

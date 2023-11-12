@@ -6,13 +6,13 @@ Dog::Dog()
 {
 	type = "Dog";
 	brain = new Brain();
-	cout << "An " << type << " has been created." << endl;
+	std::cout << "An " << type << " has been created." << std::endl;
 }
 
 Dog::~Dog()
 {
 	delete brain;
-	cout << "An " << type << " has been destroyed." << endl;
+	std::cout << "An " << type << " has been destroyed." << std::endl;
 }
 
 Dog::Dog(const Dog &other)
@@ -31,5 +31,5 @@ Dog&	Dog::operator=(const Dog &other)
 
 void	Dog::makeSound() const
 {
-	cout << "Woof" << endl;
+	std::cout << "Woof" << std::endl;
 }

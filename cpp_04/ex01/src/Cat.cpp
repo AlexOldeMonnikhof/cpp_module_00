@@ -6,13 +6,13 @@ Cat::Cat()
 {
 	type = "Cat";
 	brain = new Brain();
-	cout << "An " << type << " has been created." << endl;
+	std::cout << "An " << type << " has been created." << std::endl;
 }
 
 Cat::~Cat()
 {
 	delete brain;
-	cout << "An " << type << " has been destroyed." << endl;
+	std::cout << "An " << type << " has been destroyed." << std::endl;
 }
 
 Cat::Cat(const Cat &other)
@@ -31,5 +31,5 @@ Cat&	Cat::operator=(const Cat &other)
 
 void	Cat::makeSound() const
 {
-	cout << "Meow" << endl;
+	std::cout << "Meow" << std::endl;
 }

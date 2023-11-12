@@ -3,13 +3,9 @@
 
 # include <iostream>
 
-using std::cout;
-using std::endl;
-using std::string;
-
 class Animal{
 protected:
-	string type;
+	std::string type;
 public:
 //constructor
 	Animal();
@@ -20,8 +16,8 @@ public:
 //operator overload
 	Animal&	operator=(const Animal& other);
 //methods
-	virtual void	makeSound() const;
-	virtual string	getType() const;
+	virtual void		makeSound() const;
+	virtual std::string	getType() const;
 };
 
 #endif
