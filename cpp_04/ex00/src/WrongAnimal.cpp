@@ -3,12 +3,12 @@
 WrongAnimal::WrongAnimal()
 {
 	type = "basic WrongAnimal";
-	cout << "An basic WrongAnimal has been created." << endl;
+	std::cout << "An basic WrongAnimal has been created." << std::endl;
 }
 
 WrongAnimal::~WrongAnimal()
 {
-	cout << "An basic WrongAnimal has been destroyed." << endl;
+	std::cout << "An basic WrongAnimal has been destroyed." << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& other)
@@ -25,10 +25,10 @@ WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& other)
 
 void	WrongAnimal::makeSound() const
 {
-	cout << "Basic WrongAnimal sounds" << endl;
+	std::cout << "Basic WrongAnimal sounds" << std::endl;
 }
 
-string	WrongAnimal::getType() const
+std::string	WrongAnimal::getType() const
 {
 	return (type);
 }

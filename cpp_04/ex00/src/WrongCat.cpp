@@ -4,12 +4,12 @@
 WrongCat::WrongCat()
 {
 	type = "WrongCat";
-	cout << "An " << type << " has been created." << endl;
+	std::cout << "An " << type << " has been created." << std::endl;
 }
 
 WrongCat::~WrongCat()
 {
-	cout << "An " << type << " has been destroyed." << endl;
+	std::cout << "An " << type << " has been destroyed." << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat &other)
@@ -26,5 +26,5 @@ WrongCat&	WrongCat::operator=(const WrongCat &other)
 
 void	WrongCat::makeSound() const
 {
-	cout << "A wrong meow" << endl;;
+	std::cout << "A wrong meow" << std::endl;;
 }

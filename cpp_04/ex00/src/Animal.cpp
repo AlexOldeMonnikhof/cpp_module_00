@@ -3,12 +3,12 @@
 Animal::Animal()
 {
 	type = "basic animal";
-	cout << "An basic animal has been created." << endl;
+	std::cout << "An basic animal has been created." << std::endl;
 }
 
 Animal::~Animal()
 {
-	cout << "An basic animal has been destroyed." << endl;
+	std::cout << "An basic animal has been destroyed." << std::endl;
 }
 
 Animal::Animal(const Animal& other)
@@ -25,10 +25,10 @@ Animal&	Animal::operator=(const Animal& other)
 
 void	Animal::makeSound() const
 {
-	cout << "Basic animal sounds" << endl;
+	std::cout << "Basic animal sounds" << std::endl;
 }
 
-string	Animal::getType() const
+std::string	Animal::getType() const
 {
 	return (type);
 }
