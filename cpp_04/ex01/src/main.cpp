@@ -3,8 +3,14 @@
 #include "../inc/Dog.hpp"
 #include "../inc/Brain.hpp"
 
+// void	leakss()
+// {
+// 	system("leaks -s animal");
+// }
+
 int	main()
 {
+	// atexit(leakss);
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
 
@@ -16,7 +22,6 @@ int	main()
 	std::cout << dog2->getType() << " " << std::endl;
 	std::cout << cat2->getType() << " " << std::endl;
 	dog2->makeSound();
-	cat2->makeSound();
 
 	const Animal *animalarray[4];
 	animalarray[0] = dog1;
@@ -24,13 +29,12 @@ int	main()
 	animalarray[2] = dog2;
 	animalarray[3] = cat2;
 
-	animalarray[3]->makeSound();
+	animalarray[0]->makeSound();
+
+	for (size_t i = 0; i < 4; i++)
+		delete animalarray[i];
 
 	delete j;
 	delete i;
-	delete dog1;
-	delete dog2;
-	delete cat1;
-	delete cat2;
 	return 0;
 }
