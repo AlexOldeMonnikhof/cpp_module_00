@@ -10,13 +10,13 @@ public:
 //constructor
 	AAnimal();
 //destructor
-	virtual ~AAnimal() = 0; // pure virtual
+	virtual ~AAnimal();
 //copy constructor
 	AAnimal(const AAnimal& other);
 //operator overload
 	AAnimal&	operator=(const AAnimal& other);
 //methods
-	virtual void		makeSound() const;
+	virtual void		makeSound() const = 0;
 	virtual std::string	getType() const;
 };
 
