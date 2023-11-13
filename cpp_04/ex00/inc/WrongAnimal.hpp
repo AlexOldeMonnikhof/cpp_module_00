@@ -16,8 +16,8 @@ public:
 //operator overload
 	WrongAnimal&	operator=(const WrongAnimal& other);
 //methods
-	virtual void		makeSound() const;
-	virtual std::string	getType() const;
+	void		makeSound() const;
+	std::string	getType() const;
 };
 
 #endif
