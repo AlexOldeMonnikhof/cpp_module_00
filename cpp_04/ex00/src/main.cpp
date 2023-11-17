@@ -15,7 +15,7 @@ int	main()
 	c1->makeSound(); //will output the cat sound!
 	d1->makeSound();
 	meta->makeSound();
-	wa1->makeSound();
+	wa1->makeSound(); // will not output cat sound
 	delete meta;
 	delete d1;
 	delete c1;
