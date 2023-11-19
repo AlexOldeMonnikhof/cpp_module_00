@@ -24,6 +24,7 @@ Cat&	Cat::operator=(const Cat &other)
 {
 	if (this == &other)
 		return (*this);
+	delete brain;
 	brain = new Brain();
 	type = other.type;
 	return (*this);
