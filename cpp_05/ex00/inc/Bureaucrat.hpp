@@ -1,5 +1,5 @@
 #ifndef BUREAUCRAT_HPP
-# define BUREACRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <iostream>
 # include <exception>
@@ -12,6 +12,9 @@ private:
 public:
 //constructor
 	Bureaucrat();
+	Bureaucrat(std::string name);
+	Bureaucrat(std::string name, int grade);
+	Bureaucrat(int grade);
 
 //destructor
 	~Bureaucrat();
