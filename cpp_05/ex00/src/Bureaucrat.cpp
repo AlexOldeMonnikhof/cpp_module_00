@@ -1,8 +1,8 @@
 #include "../inc/Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("John"), grade(42)
+Bureaucrat::Bureaucrat() : name("Default"), grade(42)
 {
-	std::cout << "An bureacrat named \"John\" has joined with grade: 42" << std::endl;
+	std::cout << "An bureacrat named \"Default\" has joined with grade: 42" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name) : name(name), grade(42)
@@ -16,10 +16,10 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 	std::cout << "An bureacrat named \"" << name << "\" has joined with grade: " << grade << std::endl;
 }
 
-Bureaucrat::Bureaucrat(int grade)
+Bureaucrat::Bureaucrat(int grade) : name("Default")
 {
 	setGrade(grade);
-	std::cout << "An bureacrat named \"John\" has joined with grade: " << grade << std::endl;
+	std::cout << "An bureacrat named \"Default\" has joined with grade: " << grade << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
