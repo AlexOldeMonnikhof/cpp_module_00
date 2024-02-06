@@ -34,9 +34,15 @@ public:
 		const char* what() const throw();
 	};
 
-//getters
-	std::string	getName();
-	int			getGrade();
+//methods
+	std::string	getName() const;
+	int			getGrade() const;
+	void		setGrade(int grade);
+	void		incrementGrade();
+	void		decrementGrade();
 };
+
+std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other);
+
 
 #endif

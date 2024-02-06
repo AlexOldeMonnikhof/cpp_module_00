@@ -2,22 +2,24 @@
 
 Bureaucrat::Bureaucrat() : name("John"), grade(42)
 {
-	std::cout << "An bureacrat named \"John\" has spawned with grade: 42" << std::endl;
+	std::cout << "An bureacrat named \"John\" has joined with grade: 42" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name) : name(name), grade(42)
 {
-	std::cout << "An bureacrat named \"" << name << "\" has spawned with grade: 42" << std::endl;
+	std::cout << "An bureacrat named \"" << name << "\" has joined with grade: 42" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) : name(name), grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
-	std::cout << "An bureacrat named \"" << name << "\" has spawned with grade: " << grade << std::endl;
+	setGrade(grade);
+	std::cout << "An bureacrat named \"" << name << "\" has joined with grade: " << grade << std::endl;
 }
 
-Bureaucrat::Bureaucrat(int grade) : grade(grade)
+Bureaucrat::Bureaucrat(int grade)
 {
-	std::cout << "An bureacrat named \"John\" has spawned with grade: " << grade << std::endl;
+	setGrade(grade);
+	std::cout << "An bureacrat named \"John\" has joined with grade: " << grade << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -35,15 +37,54 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 	if (this == &other)
 		return (*this);
 	grade = other.grade;
+	return (*this);
 }
 
+std::string	Bureaucrat::getName() const
+{
+	return (this->name);
+}
 
-const char *	Bureaucrat::GradeTooHighException::what() const throw()
+int	Bureaucrat::getGrade() const
+{
+	return (this->grade);
+}
+
+void	Bureaucrat::setGrade(int grade)
+{
+	if (grade < 1)
+		throw(GradeTooHighException());
+	if (grade > 150)
+		throw(GradeTooLowException());
+	this->grade = grade;
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (grade == 1)
+		throw (GradeTooHighException());
+	grade--;
+}
+
+void	Bureaucrat::decrementGrade()
+{
+	if (grade == 150)
+		throw (GradeTooLowException());
+	grade++;
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Error: grade too high.");
 }
 
-const char *	Bureaucrat::GradeTooLowException::what() const throw()
+const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Error: grade too low.");
+}
+
+std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other)
+{
+	stream << other.getName() << ", bureaucrat grade " << other.getGrade() << ".";
+	return (stream);
 }
