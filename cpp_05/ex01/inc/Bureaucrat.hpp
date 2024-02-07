@@ -25,6 +25,7 @@ public:
 //operator overload
 	Bureaucrat& operator=(const Bureaucrat& other);
 
+//exceptions
 	class	GradeTooHighException : public std::exception{
 	public:
 		const char* what() const throw();
@@ -40,6 +41,7 @@ public:
 	void		setGrade(int grade);
 	void		incrementGrade();
 	void		decrementGrade();
+	void		signForm();
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other);
