@@ -73,14 +73,19 @@ void	Bureaucrat::decrementGrade()
 	grade++;
 }
 
+void	Bureaucrat::signForm(Form &form)
+{
+	form.beSigned(&this);
+}
+
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Error: grade too high.");
+	return ("the grade is too high.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Error: grade too low.");
+	return ("the grade is too low.");
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other)

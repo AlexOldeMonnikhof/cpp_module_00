@@ -1,5 +1,5 @@
 NAME = bureaucrat
-SRC = main.cpp Bureaucrat.cpp
+SRC = main.cpp Bureaucrat.cpp Form.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
@@ -12,7 +12,7 @@ $(NAME) : $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@printf "$(NAME) compiled\n"
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp %.h | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -o $@ -c $<
 
 $(OBJ_DIR):

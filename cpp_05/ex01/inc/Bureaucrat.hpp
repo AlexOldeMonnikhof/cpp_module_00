@@ -1,6 +1,8 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
+# include "Form.hpp"
+
 # include <iostream>
 # include <exception>
 
@@ -41,7 +43,7 @@ public:
 	void		setGrade(int grade);
 	void		incrementGrade();
 	void		decrementGrade();
-	void		signForm();
+	void		signForm(Form &form);
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other);
