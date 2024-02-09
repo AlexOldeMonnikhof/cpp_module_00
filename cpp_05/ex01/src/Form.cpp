@@ -5,7 +5,7 @@
 Form::Form() : name("Basic project"), signGrade(42), executeGrade(21)
 {
 	isSigned = false;
-	std::cout << "A basic project has been created" << std::endl;
+	std::cout << "A basic project has been created." << std::endl;
 }
 
 Form::Form(std::string name) : name(name), signGrade(42), executeGrade(21)
@@ -25,7 +25,7 @@ Form::Form(const std::string name, int signGrade, int executeGrade) : name(name)
 
 Form::~Form()
 {
-	std::cout << name << " has been deleted" << std::endl;
+
 }
 
 const char *Form::GradeTooHighException::what() const throw()
@@ -58,8 +58,10 @@ int Form::getExecuteGrade() const
 	return (this->executeGrade);
 }
 
-void	Form::beSigned(const Bureaucrat& signer)
+void	Form::beSigned(Bureaucrat& signer)
 {
+	if (signer.getGrade() > this->getSignGrade() || this->getSigned() == true)
+		std::cout << signer.getName() << " couldn't sign " << name << " because ";
 	if (signer.getGrade() > this->getSignGrade())
 		throw(Bureaucrat::GradeTooLowException());
 	if (this->getSigned() == true)

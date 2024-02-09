@@ -4,21 +4,10 @@ int main()
 {
 	try
 	{
-		Bureaucrat john("john");
-		Bureaucrat bob("bob", 59);
-		Bureaucrat larry("larry", 1);
-
-		//decrementing grade
-		for (size_t i = 0; i < 100; i++)
-			larry.decrementGrade();
-		std::cout << larry << std::endl;
-
-		// //error: grade too low
-		Bureaucrat peter("peter", 151);
-
-		//error: grade too high
-		Bureaucrat mitchell("mitchell", 1);
-		mitchell.incrementGrade();
+		Bureaucrat	person1("bob", 53);
+		Form		form1("Big project", 50, 20);
+		person1.signForm(form1);
+		person1.signForm(form1);
 	}
 	catch (std::exception &e)
 	{

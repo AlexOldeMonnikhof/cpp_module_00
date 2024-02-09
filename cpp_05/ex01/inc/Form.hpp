@@ -5,6 +5,8 @@
 
 # include <iostream>
 
+class Bureaucrat;
+
 class Form{
 private:
 	const std::string	name;
@@ -42,7 +44,7 @@ public:
 	bool				getSigned() const;
 	int					getSignGrade() const;
 	int					getExecuteGrade() const;
-	void				beSigned(const Bureaucrat& signer);
+	void				beSigned(Bureaucrat& signer);
 };
 
 std::ostream& operator<<(std::ostream& stream, const Form& other);

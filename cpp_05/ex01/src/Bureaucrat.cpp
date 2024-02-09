@@ -2,18 +2,18 @@
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(42)
 {
-	std::cout << "An bureacrat named \"Default\" has joined with grade: 42" << std::endl;
+	std::cout << "Default has joined with grade: 42" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name) : name(name), grade(42)
 {
-	std::cout << "An bureacrat named \"" << name << "\" has joined with grade: 42" << std::endl;
+	std::cout << "" << name << " has joined with grade: 42" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	setGrade(grade);
-	std::cout << "An bureacrat named \"" << name << "\" has joined with grade: " << grade << std::endl;
+	std::cout << "" << name << " has joined with grade: " << grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : name("Default")
@@ -24,7 +24,7 @@ Bureaucrat::Bureaucrat(int grade) : name("Default")
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << name << " has left" << std::endl;
+	
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
@@ -75,17 +75,17 @@ void	Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(Form &form)
 {
-	form.beSigned(&this);
+	form.beSigned(*this);
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("the grade is too high.");
+	return ("grade is too high.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("the grade is too low.");
+	return ("grade is too low.");
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other)

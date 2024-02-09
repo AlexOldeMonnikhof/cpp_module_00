@@ -12,7 +12,7 @@ $(NAME) : $(OBJ)
 	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 	@printf "$(NAME) compiled\n"
 
-$(OBJ_DIR)/%.o: %.cpp %.h | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@$(CC) $(FLAGS) -o $@ -c $<
 
 $(OBJ_DIR):
