@@ -1,5 +1,6 @@
 #include "../inc/Form.hpp"
 
+
 //could also initialize isSigned boolean in the member initializer list
 //but want to show const variables need to be initialized on this list and nonconst not
 Form::Form() : name("Basic project"), signGrade(42), executeGrade(21)
@@ -21,6 +22,19 @@ Form::Form(const std::string name, int signGrade, int executeGrade) : name(name)
 		throw(GradeTooLowException());
 	isSigned = false;
 	std::cout << name << " has been created" << std::endl;
+}
+
+Form::Form(const Form& other) : name(other.getName()), signGrade(other.getSignGrade()), executeGrade(other.getExecuteGrade())
+{
+	*this = other;
+}
+
+//if statement is useless but needed because the -Werror flag
+Form&	Form::operator=(const Form& other)
+{
+	if (this == &other)
+		return (*this);
+	return (*this);
 }
 
 Form::~Form()
@@ -71,4 +85,15 @@ void	Form::beSigned(Bureaucrat& signer)
 		this->isSigned = true;
 		std::cout << signer.getName() << " signed " << this->getName() << "." << std::endl;
 	}
+}
+
+std::ostream& operator<<(std::ostream& stream, const Form& other)
+{
+	stream << "Form: " << other.getName() << "\nSigned: ";
+	if (other.getSigned() == true)
+		stream << "true";
+	else
+		stream << "false";
+	stream << "\nSign grade: " << other.getSignGrade() << "\nExecute grade: ";
+	return (stream);
 }
