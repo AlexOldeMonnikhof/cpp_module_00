@@ -1,4 +1,4 @@
-#include "../inc/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(42)
 {
@@ -27,7 +27,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << name << " has left" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name)
 {
 	*this = other;
 }
@@ -40,7 +40,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& other)
 	return (*this);
 }
 
-std::string	Bureaucrat::getName() const
+const std::string	Bureaucrat::getName() const
 {
 	return (this->name);
 }
@@ -75,12 +75,12 @@ void	Bureaucrat::decrementGrade()
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Error: grade too high. (or invalid)");
+	return ("Error: grade too high.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Error: grade too low. (or invalid)");
+	return ("Error: grade too low.");
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other)

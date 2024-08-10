@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include "Bureaucrat.hpp"
 
@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class Form{
+class AForm{
 private:
 	const std::string	name;
 	bool				isSigned;
@@ -16,18 +16,18 @@ private:
 
 public:
 //constructor
-	Form();
-	Form(const std::string name);
-	Form(const std::string name, int signGrade, int executeGrade);
+	AForm();
+	AForm(const std::string name);
+	AForm(const std::string name, int signGrade, int executeGrade);
 
 //destructor
-	~Form();
+	virtual ~AForm();
 
 //copy constructor
-	Form(const Form& other);
+	AForm(const AForm& other);
 
 //operator overload
-	Form& operator=(const Form& other);
+	AForm& operator=(const AForm& other);
 
 //exceptions
 	class GradeTooHighException : std::exception{
@@ -38,6 +38,10 @@ public:
 	public:
 		const char *what() const throw();
 	};
+	class FormNotSigned : std::exception{
+	public:
+		const char *what() const throw();
+	};
 
 //methods
 	const std::string	getName() const;
@@ -45,8 +49,9 @@ public:
 	int					getSignGrade() const;
 	int					getExecuteGrade() const;
 	void				beSigned(Bureaucrat& signer);
+	virtual void		execute(Bureaucrat const& executor) const = 0;
 };
 
-std::ostream& operator<<(std::ostream& stream, const Form& other);
+std::ostream& operator<<(std::ostream& stream, const AForm& other);
 
 #endif

@@ -1,20 +1,20 @@
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 
 //could also initialize isSigned boolean in the member initializer list
 //but want to show const variables need to be initialized on this list and nonconst not
-Form::Form() : name("Basic project"), signGrade(42), executeGrade(21)
+AForm::AForm() : name("Basic project"), signGrade(42), executeGrade(21)
 {
 	isSigned = false;
 	std::cout << "A basic project has been created." << std::endl;
 }
 
-Form::Form(std::string name) : name(name), signGrade(42), executeGrade(21)
+AForm::AForm(std::string name) : name(name), signGrade(42), executeGrade(21)
 {
 	isSigned = false;
 }
 
-Form::Form(const std::string name, int signGrade, int executeGrade) : name(name), signGrade(signGrade), executeGrade(executeGrade)
+AForm::AForm(const std::string name, int signGrade, int executeGrade) : name(name), signGrade(signGrade), executeGrade(executeGrade)
 {
 	if (signGrade < 1 || executeGrade < 1)
 		throw(GradeTooHighException());
@@ -24,55 +24,60 @@ Form::Form(const std::string name, int signGrade, int executeGrade) : name(name)
 	std::cout << name << " has been created" << std::endl;
 }
 
-Form::Form(const Form& other) : name(other.getName()), signGrade(other.getSignGrade()), executeGrade(other.getExecuteGrade())
+AForm::AForm(const AForm& other) : name(other.getName()), signGrade(other.getSignGrade()), executeGrade(other.getExecuteGrade())
 {
 	*this = other;
 }
 
 //if statement is useless but needed because the -Werror flag
-Form&	Form::operator=(const Form& other)
+AForm&	AForm::operator=(const AForm& other)
 {
 	if (this == &other)
 		return (*this);
 	return (*this);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
 
 }
 
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("The grade of the form can not be higher than 1");
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("The grade of the form can not be lower than 150");
 }
 
-const std::string	Form::getName() const
+const char *AForm::FormNotSigned::what() const throw()
+{
+	return ("This form is not signed");
+}
+
+const std::string	AForm::getName() const
 {
 	return (this->name);
 }
 
-bool	Form::getSigned() const
+bool	AForm::getSigned() const
 {
 	return (this->isSigned);
 }
 
-int	Form::getSignGrade() const
+int	AForm::getSignGrade() const
 {
 	return (this->signGrade);
 }
 
-int Form::getExecuteGrade() const
+int AForm::getExecuteGrade() const
 {
 	return (this->executeGrade);
 }
 
-void	Form::beSigned(Bureaucrat& signer)
+void	AForm::beSigned(Bureaucrat& signer)
 {
 	if (signer.getGrade() > this->getSignGrade() || this->getSigned() == true)
 		std::cout << signer.getName() << " couldn't sign " << name << " because ";
@@ -87,9 +92,9 @@ void	Form::beSigned(Bureaucrat& signer)
 	}
 }
 
-std::ostream& operator<<(std::ostream& stream, const Form& other)
+std::ostream& operator<<(std::ostream& stream, const AForm& other)
 {
-	stream << "Form: " << other.getName() << "\nSigned: ";
+	stream << "AForm: " << other.getName() << "\nSigned: ";
 	if (other.getSigned() == true)
 		stream << "true";
 	else

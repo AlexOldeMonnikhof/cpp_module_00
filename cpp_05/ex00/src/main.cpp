@@ -1,4 +1,4 @@
-#include "../inc/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 int main()
 {
@@ -13,7 +13,7 @@ int main()
 			larry.decrementGrade();
 		std::cout << larry << std::endl;
 
-		// //error: grade too low
+		//error: grade too low
 		Bureaucrat peter("peter", 151);
 
 		//error: grade too high

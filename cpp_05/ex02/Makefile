@@ -1,9 +1,10 @@
 NAME = bureaucrat
-SRC = main.cpp Bureaucrat.cpp Form.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
-FLAGS = -Wall -Wextra -Werror -std=c++98
+HEADERS = -I inc
+FLAGS = 
 CC = c++
 
 all: $(NAME)
@@ -13,7 +14,7 @@ $(NAME) : $(OBJ)
 	@printf "$(NAME) compiled\n"
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@$(CC) $(FLAGS) -o $@ -c $<
+	@$(CC) $(FLAGS) -o $@ -c $< $(HEADERS)
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)

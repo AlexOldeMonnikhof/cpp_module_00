@@ -1,4 +1,4 @@
-#include "../inc/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(42)
 {
@@ -27,7 +27,7 @@ Bureaucrat::~Bureaucrat()
 	
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name)
 {
 	*this = other;
 }
@@ -73,19 +73,31 @@ void	Bureaucrat::decrementGrade()
 	grade++;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	form.beSigned(*this);
 }
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("grade is too high. (or invalid)");
+	return ("grade too high.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("grade is too low. (or invalid)");
+	return ("grade too low.");
+}
+
+void	Bureaucrat::executeForm(AForm& form)
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const AForm::For& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other)

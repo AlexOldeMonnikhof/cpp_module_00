@@ -32,14 +32,15 @@ public:
 	class	GradeTooLowException : public std::exception{
 	public:
 		const char* what() const throw();
-	};
+	}
+;
 
 //methods
-	std::string	getName() const;
-	int			getGrade() const;
-	void		setGrade(int grade);
-	void		incrementGrade();
-	void		decrementGrade();
+	const std::string	getName() const;
+	int					getGrade() const;
+	void				setGrade(int grade);
+	void				incrementGrade();
+	void				decrementGrade();
 };
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other);

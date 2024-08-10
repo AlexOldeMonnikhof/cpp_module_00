@@ -3,6 +3,7 @@ SRC = main.cpp Bureaucrat.cpp Form.cpp
 VPATH = src
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 OBJ_DIR = obj
+HEADERS = -I inc
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
 
@@ -13,7 +14,7 @@ $(NAME) : $(OBJ)
 	@printf "$(NAME) compiled\n"
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@$(CC) $(FLAGS) -o $@ -c $<
+	@$(CC) $(FLAGS) -o $@ -c $< $(HEADERS)
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)

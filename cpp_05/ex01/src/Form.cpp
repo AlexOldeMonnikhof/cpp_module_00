@@ -1,5 +1,4 @@
-#include "../inc/Form.hpp"
-
+#include "Form.hpp"
 
 //could also initialize isSigned boolean in the member initializer list
 //but want to show const variables need to be initialized on this list and nonconst not
@@ -44,12 +43,12 @@ Form::~Form()
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return ("The grade of the form can not be higher than 1");
+	return ("form error: grade too high.");
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return ("The grade of the form can not be lower than 150");
+	return ("form error: grade too low");
 }
 
 const std::string	Form::getName() const
@@ -74,16 +73,18 @@ int Form::getExecuteGrade() const
 
 void	Form::beSigned(Bureaucrat& signer)
 {
-	if (signer.getGrade() > this->getSignGrade() || this->getSigned() == true)
-		std::cout << signer.getName() << " couldn't sign " << name << " because ";
-	if (signer.getGrade() > this->getSignGrade())
-		throw(Bureaucrat::GradeTooLowException());
 	if (this->getSigned() == true)
-		std::cout << this->name << " is already signed." << std::endl;
+		std::cout << signer.getName() << " couldn't sign " << name << " because the form is already signed." << std::endl;
+	else if (signer.getGrade() > this->getSignGrade())
+	{
+
+		std::cout << signer.getName() << " couldn't sign " << name << " because their grade is too low." << std::endl;
+		throw(Bureaucrat::GradeTooLowException());
+	}
 	else
 	{
 		this->isSigned = true;
-		std::cout << signer.getName() << " signed " << this->getName() << "." << std::endl;
+		std::cout << signer.getName() << " signed " << this->getName() << std::endl;
 	}
 }
 
@@ -94,6 +95,6 @@ std::ostream& operator<<(std::ostream& stream, const Form& other)
 		stream << "true";
 	else
 		stream << "false";
-	stream << "\nSign grade: " << other.getSignGrade() << "\nExecute grade: ";
+	stream << "\nSign grade: " << other.getSignGrade() << "\nExecute grade: " << other.getExecuteGrade();
 	return (stream);
 }

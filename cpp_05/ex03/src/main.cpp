@@ -1,13 +1,12 @@
-#include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "AForm.hpp"
+#include "../inc/Bureaucrat.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
+#include "../inc/AForm.hpp"
 
 int main()
 {
 	try
 	{
-		Bureaucrat	b1("john", -1);
-		std::cout << b1 << std::endl;
+		Bureaucrat	b1("john", 149);
 		ShrubberyCreationForm f1("house");
 		f1.execute(b1);
 	}
