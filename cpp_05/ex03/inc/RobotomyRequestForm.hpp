@@ -17,7 +17,7 @@ public:
 	RobotomyRequestForm(std::string target);
 
 //destructor
-	virtual ~RobotomyRequestForm();
+	~RobotomyRequestForm();
 
 //copy constructor
 	RobotomyRequestForm(const RobotomyRequestForm& other);

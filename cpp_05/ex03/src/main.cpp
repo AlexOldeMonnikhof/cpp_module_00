@@ -1,54 +1,34 @@
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int main()
 {
-	{
-		try
-		{
-			Bureaucrat	bureaucrat("john", 111);
-			//ShrubberyCreationForm: sign = 145, exec = 137
-			ShrubberyCreationForm form("house");
+	Bureaucrat 	john("John", 3);
+	Intern		rick;
 
-			bureaucrat.signForm(form);
-			bureaucrat.executeForm(form);
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
-	{
-		try
-		{
-			Bureaucrat	bureaucrat("bob", 40);
-			//RobotomyRequestForm: sign = 72, exec = 45
-			RobotomyRequestForm form("robot");
+	AForm		*form1 = rick.makeForm("ShrubberyCreation", "garden");
+	AForm		*form2 = rick.makeForm("PresidentialPardon", "andy");
+	AForm		*form3 = rick.makeForm("NonExistingForm", "john");
 
-			bureaucrat.signForm(form);
-			bureaucrat.executeForm(form);
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
-	}
+	if (form1)
 	{
-		try
-		{
-			Bureaucrat	bureaucrat("robert", 6);
-			//PresidentialPardonForm: sign = 25, exec = 5
-			PresidentialPardonForm form("criminal");
-
-			bureaucrat.signForm(form);
-			bureaucrat.executeForm(form);
-		}
-		catch (std::exception &e)
-		{
-			std::cerr << e.what() << std::endl;
-		}
+		john.signForm(*form1);
+		john.executeForm(*form1);
 	}
+
+	if (form2)
+	{
+		john.signForm(*form2);
+		john.executeForm(*form2);
+	}
+
+	//form3 not found (NULL)
+	if (form3)
+	{
+		john.signForm(*form3);
+		john.executeForm(*form3);
+	}
+
+	delete form1; delete form2; delete form3;
 	return 0;
 }

@@ -20,7 +20,7 @@ AForm::AForm(const std::string name, int signGrade, int executeGrade) : name(nam
 	if (signGrade > 150 || executeGrade > 150)
 		throw(AForm::GradeTooLowException());
 	isSigned = false;
-	std::cout << name << " has been created" << std::endl;
+	// std::cout << name << " has been created" << std::endl;
 }
 
 AForm::AForm(const AForm& other) : name(other.getName()), signGrade(other.getSignGrade()), executeGrade(other.getExecuteGrade())
