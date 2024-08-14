@@ -29,7 +29,7 @@ public:
 	ShrubberyCreationForm(std::string target);
 
 //destructor
-	virtual ~ShrubberyCreationForm();
+	~ShrubberyCreationForm();
 
 //copy constructor
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);

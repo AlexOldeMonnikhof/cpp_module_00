@@ -17,7 +17,7 @@ public:
 	PresidentialPardonForm(std::string target);
 
 //destructor
-	virtual ~PresidentialPardonForm();
+	~PresidentialPardonForm();
 
 //copy constructor
 	PresidentialPardonForm(const PresidentialPardonForm& other);
