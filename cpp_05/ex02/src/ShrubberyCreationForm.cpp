@@ -35,7 +35,7 @@ std::string	ShrubberyCreationForm::getTarget() const
 void	ShrubberyCreationForm::executeForm() const
 {
 	std::ofstream	outputFile;
-	outputFile.open((this->getName()) + "_shrubbery");
-	outputFile << "lol" << std::endl;
+	outputFile.open((this->getTarget()) + "_shrubbery");
+	outputFile << TREE << std::endl;
 	outputFile.close();
 }

@@ -74,7 +74,7 @@ int AForm::getExecuteGrade() const
 void	AForm::beSigned(Bureaucrat& signer)
 {
 	if (this->getSigned() == true)
-		std::cout << signer.getName() << " couldn't sign " << name << " because the Aform is already signed." << std::endl;
+		std::cout << signer.getName() << " couldn't sign " << name << " because the form is already signed." << std::endl;
 	else if (signer.getGrade() > this->getSignGrade())
 	{
 
@@ -90,7 +90,6 @@ void	AForm::beSigned(Bureaucrat& signer)
 
 void	AForm::execute(const Bureaucrat& executor) const
 {
-	std::cout << executor.getGrade() << " " << getExecuteGrade() << " " << getSigned() << std::endl;
 	if (executor.getGrade() <= getExecuteGrade() && getSigned() == true)
 		executeForm();
 	else if (executor.getGrade() <= getExecuteGrade() && getSigned() == false)

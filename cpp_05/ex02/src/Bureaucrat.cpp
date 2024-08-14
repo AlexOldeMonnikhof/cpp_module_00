@@ -13,7 +13,7 @@ Bureaucrat::Bureaucrat(std::string name) : name(name), grade(42)
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	setGrade(grade);
-	std::cout << "" << name << " has joined with grade: " << grade << std::endl;
+	std::cout << name << " has joined with grade: " << grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : name("Default")
@@ -88,13 +88,14 @@ const char *Bureaucrat::GradeTooLowException::what() const throw()
 	return ("grade too low.");
 }
 
-void	Bureaucrat::executeForm(AForm& form)
+void	Bureaucrat::executeForm(AForm const& form)
 {
 	try
 	{
 		form.execute(*this);
+		std::cout << getName() << " executed " << form.getName() << std::endl;
 	}
-	catch(const AForm::For& e)
+	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
 	}
