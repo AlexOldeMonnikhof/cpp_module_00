@@ -36,6 +36,11 @@ void	ShrubberyCreationForm::executeForm() const
 {
 	std::ofstream	outputFile;
 	outputFile.open((this->getTarget()) + "_shrubbery");
+	if (!outputFile.is_open())
+	{
+		std::cerr << "could not open file" << std::endl;
+		return ;
+	}
 	outputFile << TREE << std::endl;
 	outputFile.close();
 }

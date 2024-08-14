@@ -6,7 +6,7 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 
 
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 185, 137), target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm("ShrubberyCreationForm", 145, 137), target(target)
 {
 
 }
@@ -36,6 +36,11 @@ void	ShrubberyCreationForm::executeForm() const
 {
 	std::ofstream	outputFile;
 	outputFile.open((this->getTarget()) + "_shrubbery");
+	if (!outputFile.is_open())
+	{
+		std::cerr << "could not open file" << std::endl;
+		return ;
+	}
 	outputFile << TREE << std::endl;
 	outputFile.close();
 }
