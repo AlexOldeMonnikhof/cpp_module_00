@@ -1,18 +1,54 @@
-#include "../inc/Bureaucrat.hpp"
-#include "../inc/ShrubberyCreationForm.hpp"
-#include "../inc/AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int main()
 {
-	try
 	{
-		Bureaucrat	b1("john", 149);
-		ShrubberyCreationForm f1("house");
-		f1.execute(b1);
+		try
+		{
+			Bureaucrat	bureaucrat("john", 111);
+			//ShrubberyCreationForm: sign = 145, exec = 137
+			ShrubberyCreationForm form("house");
+
+			bureaucrat.signForm(form);
+			bureaucrat.executeForm(form);
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
-	catch (std::exception &e)
 	{
-		std::cerr << e.what() << std::endl;
+		try
+		{
+			Bureaucrat	bureaucrat("bob", 40);
+			//RobotomyRequestForm: sign = 72, exec = 45
+			RobotomyRequestForm form("robot");
+
+			bureaucrat.signForm(form);
+			bureaucrat.executeForm(form);
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+	}
+	{
+		try
+		{
+			Bureaucrat	bureaucrat("robert", 6);
+			//PresidentialPardonForm: sign = 25, exec = 5
+			PresidentialPardonForm form("criminal");
+
+			bureaucrat.signForm(form);
+			bureaucrat.executeForm(form);
+		}
+		catch (std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	return 0;
 }

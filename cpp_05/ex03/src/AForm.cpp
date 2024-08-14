@@ -1,5 +1,4 @@
-#include "../inc/AForm.hpp"
-
+#include "AForm.hpp"
 
 //could also initialize isSigned boolean in the member initializer list
 //but want to show const variables need to be initialized on this list and nonconst not
@@ -17,9 +16,9 @@ AForm::AForm(std::string name) : name(name), signGrade(42), executeGrade(21)
 AForm::AForm(const std::string name, int signGrade, int executeGrade) : name(name), signGrade(signGrade), executeGrade(executeGrade)
 {
 	if (signGrade < 1 || executeGrade < 1)
-		throw(GradeTooHighException());
+		throw(AForm::GradeTooHighException());
 	if (signGrade > 150 || executeGrade > 150)
-		throw(GradeTooLowException());
+		throw(AForm::GradeTooLowException());
 	isSigned = false;
 	std::cout << name << " has been created" << std::endl;
 }
@@ -44,17 +43,12 @@ AForm::~AForm()
 
 const char *AForm::GradeTooHighException::what() const throw()
 {
-	return ("The grade of the form can not be higher than 1");
+	return ("form error: grade too high.");
 }
 
 const char *AForm::GradeTooLowException::what() const throw()
 {
-	return ("The grade of the form can not be lower than 150");
-}
-
-const char *AForm::FormNotSigned::what() const throw()
-{
-	return ("This form is not signed");
+	return ("form error: grade too low");
 }
 
 const std::string	AForm::getName() const
@@ -79,26 +73,38 @@ int AForm::getExecuteGrade() const
 
 void	AForm::beSigned(Bureaucrat& signer)
 {
-	if (signer.getGrade() > this->getSignGrade() || this->getSigned() == true)
-		std::cout << signer.getName() << " couldn't sign " << name << " because ";
-	if (signer.getGrade() > this->getSignGrade())
-		throw(Bureaucrat::GradeTooLowException());
 	if (this->getSigned() == true)
-		std::cout << this->name << " is already signed." << std::endl;
+		std::cout << signer.getName() << " couldn't sign " << name << " because the form is already signed." << std::endl;
+	else if (signer.getGrade() > this->getSignGrade())
+	{
+
+		std::cout << signer.getName() << " couldn't sign " << name << " because their grade is too low." << std::endl;
+		throw(Bureaucrat::GradeTooLowException());
+	}
 	else
 	{
 		this->isSigned = true;
-		std::cout << signer.getName() << " signed " << this->getName() << "." << std::endl;
+		std::cout << signer.getName() << " signed " << this->getName() << std::endl;
 	}
+}
+
+void	AForm::execute(const Bureaucrat& executor) const
+{
+	if (executor.getGrade() <= getExecuteGrade() && getSigned() == true)
+		executeForm();
+	else if (executor.getGrade() <= getExecuteGrade() && getSigned() == false)
+		std::cout << "form must be signed" << std::endl;
+	else
+		throw(Bureaucrat::GradeTooLowException());
 }
 
 std::ostream& operator<<(std::ostream& stream, const AForm& other)
 {
-	stream << "AForm: " << other.getName() << "\nSigned: ";
+	stream << "Form: " << other.getName() << "\nSigned: ";
 	if (other.getSigned() == true)
 		stream << "true";
 	else
 		stream << "false";
-	stream << "\nSign grade: " << other.getSignGrade() << "\nExecute grade: ";
+	stream << "\nSign grade: " << other.getSignGrade() << "\nExecute grade: " << other.getExecuteGrade();
 	return (stream);
 }

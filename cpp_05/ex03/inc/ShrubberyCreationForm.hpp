@@ -7,7 +7,17 @@
 # include <fstream>
 # include <string>
 
-class AForm;
+# define TREE "\
+               ,@@@@@@@,\n\
+       ,,,.   ,@@@@@@/@@,  .oo8888o.\n\
+    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n\
+   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'\n\
+   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'\n\
+   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'\n\
+   `&%\\ ` /%&'    |.|        \\ '|8'\n\
+       |o|        | |         | |\n\
+       |.|        | |         | |\n\
+    \\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_\n"
 
 class ShrubberyCreationForm : public AForm{
 private:
@@ -19,7 +29,7 @@ public:
 	ShrubberyCreationForm(std::string target);
 
 //destructor
-	~ShrubberyCreationForm();
+	virtual ~ShrubberyCreationForm();
 
 //copy constructor
 	ShrubberyCreationForm(const ShrubberyCreationForm& other);
@@ -29,7 +39,7 @@ public:
 
 //methods
 	std::string	getTarget() const;
-	void		execute(Bureaucrat const& executor) const;
+	void		executeForm() const;
 };
 
 #endif

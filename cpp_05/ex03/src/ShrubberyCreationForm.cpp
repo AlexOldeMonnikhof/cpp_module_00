@@ -1,5 +1,5 @@
-#include "../inc/ShrubberyCreationForm.hpp"
-#include "../inc/AForm.hpp"
+#include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), target("default")
 {
@@ -32,14 +32,10 @@ std::string	ShrubberyCreationForm::getTarget() const
 	return (this->target);
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
+void	ShrubberyCreationForm::executeForm() const
 {
-	if (this->getSigned() == false)
-		throw(AForm::FormNotSigned());
-	if (executor.getGrade() > this->getSignGrade())
-		throw(AForm::GradeTooLowException());
 	std::ofstream	outputFile;
-	outputFile.open((this->getName()) + "_shrubbery");
-	outputFile << "lol" << std::endl;
+	outputFile.open((this->getTarget()) + "_shrubbery");
+	outputFile << TREE << std::endl;
 	outputFile.close();
 }

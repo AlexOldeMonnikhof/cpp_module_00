@@ -32,15 +32,11 @@ public:
 //exceptions
 	class GradeTooHighException : std::exception{
 	public:
-		const char *what() const throw();
+		virtual const char *what() const throw();
 	};
 	class GradeTooLowException : std::exception{
 	public:
-		const char *what() const throw();
-	};
-	class FormNotSigned : std::exception{
-	public:
-		const char *what() const throw();
+		virtual const char *what() const throw();
 	};
 
 //methods
@@ -49,7 +45,8 @@ public:
 	int					getSignGrade() const;
 	int					getExecuteGrade() const;
 	void				beSigned(Bureaucrat& signer);
-	virtual void		execute(Bureaucrat const& executor) const = 0;
+	void				execute(const Bureaucrat& executor) const;
+	virtual void		executeForm() const = 0;
 };
 
 std::ostream& operator<<(std::ostream& stream, const AForm& other);

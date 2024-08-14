@@ -1,4 +1,4 @@
-#include "../inc/Bureaucrat.hpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(42)
 {
@@ -13,7 +13,7 @@ Bureaucrat::Bureaucrat(std::string name) : name(name), grade(42)
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	setGrade(grade);
-	std::cout << "" << name << " has joined with grade: " << grade << std::endl;
+	std::cout << name << " has joined with grade: " << grade << std::endl;
 }
 
 Bureaucrat::Bureaucrat(int grade) : name("Default")
@@ -27,7 +27,7 @@ Bureaucrat::~Bureaucrat()
 	
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& other)
+Bureaucrat::Bureaucrat(const Bureaucrat& other) : name(other.name)
 {
 	*this = other;
 }
@@ -80,12 +80,25 @@ void	Bureaucrat::signForm(AForm &form)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("grade is too high. (or invalid)");
+	return ("grade too high.");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("grade is too low. (or invalid)");
+	return ("grade too low.");
+}
+
+void	Bureaucrat::executeForm(AForm const& form)
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 std::ostream& operator<<(std::ostream& stream, const Bureaucrat& other)
