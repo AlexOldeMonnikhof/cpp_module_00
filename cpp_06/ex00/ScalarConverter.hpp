@@ -15,7 +15,7 @@ typedef enum e_type{
 }   type;
 
 class ScalarConverter{
-protected:
+private:
     ScalarConverter();
 public:
     ~ScalarConverter();
@@ -41,4 +41,5 @@ public:
     void printChar(const std::string str);
     void printFloatDouble(const std::string str);
     void printWord(std::string str);
+
 #endif
