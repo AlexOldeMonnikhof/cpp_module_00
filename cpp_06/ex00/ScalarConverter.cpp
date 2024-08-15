@@ -21,8 +21,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
     return (*this);
 }
 
-
-
 bool    isChar(std::string str)
 {
     if (str.size() == 1 && !isdigit(str[0]))
@@ -37,9 +35,8 @@ bool    isInt(std::string str)
         i++;
     while (str[i])
     {
-        if (!isdigit(str[i]))
+        if (!isdigit(str[i++]))
             return false;
-        i++;
     }
     return true;
 }
@@ -74,7 +71,6 @@ bool    isDouble(std::string str)
     int i = 0;
     int dotCount = 0;
     int digitCount = 0;
-    int fCount = 0;
 
     if (str[i] == '+' || str[i] == '-')
         i++;
@@ -82,24 +78,29 @@ bool    isDouble(std::string str)
     {
         if (str[i] == '.')
             dotCount++;
-        else if (!isdigit(str[i]) && !(str[i] == 'f' && !str[i + 1]))
-            return false;
         else if (isdigit(str[i]))
             digitCount++;
-        else if (str[i] == 'f')
-            fCount++;
+        else
+            return false;
     }
-    if (digitCount == 0 || fCount > 0 || dotCount != 1)
+    if (digitCount == 0 || dotCount != 1)
         return false;
     return true;
 }
 
+// can all be 1 if statement ofcourse this just looks better
 bool    isWord(std::string str)
 {
-
+    //floats
+    if (str == "-inff" || str == "+inff" || str == "inff" || str == "nanf")
+        return true;
+    //doubles
+    if (str == "-inf" || str == "+inf" || str == "inf" || str == "nan")
+        return true;
+    return false;
 }
 
-e_type  findType(const std::string str)
+e_type findType(const std::string str)
 {
     if (isChar(str))
         return (CHAR);
@@ -110,35 +111,98 @@ e_type  findType(const std::string str)
     if (isDouble(str))
         return (DOUBLE);
     if (isWord(str))
-        return (DOUBLE);
+        return (WORD);
     return (NO_TYPE);
 }
 
-void ScalarConverter::convert(const std::string str)
+std::string getChar(int c)
+{
+    if (std::isprint(c))
+        return ("\'" + std::string(1, c) + "\'");
+    return "Non displayable";
+}
+
+void   printChar(const std::string str)
+{
+    char c = str[0];
+    std::cout << "char: \'" << c << "\'\n";
+    std::cout << "int: " << static_cast<int>(c) << '\n';
+    std::cout << "float: " << static_cast<float>(c) << ".0f\n";
+    std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+}
+
+void   printInt(const std::string str)
+{
+    long long res = atoll(str.c_str());
+    std::cout << "char: " << getChar(res) << '\n';
+    if (res < INT_MIN || res > INT_MAX)
+        std::cout << "int: impossible\n";
+    else
+        std::cout << "int: " << static_cast<int>(res) << '\n';
+    std::cout << "float: " << static_cast<float>(res) << ".0f\n";
+    std::cout << "double: " << static_cast<double>(res) << ".0" << std::endl;
+}
+
+void   printFloatDouble(const std::string str)
+{
+    double res = atof(str.c_str());
+    std::cout << "char: " << getChar(res) << '\n';
+    if ((long)res < INT_MIN || (long)res > INT_MAX)
+        std::cout << "int: impossible\n";
+    else
+        std::cout << "int: " << static_cast<int>(res) << '\n';
+    if (static_cast<int>(res) - res == 0)
+    {
+        std::cout << "float: " << static_cast<float>(res) << ".0f\n";
+        std::cout << "double: " << res << ".0" << std::endl;
+    }
+    else
+    {
+        std::cout << "float: " << static_cast<float>(res) << "f\n";
+        std::cout << "double: " << res << std::endl;
+    }
+}
+
+void   printWord(std::string str)
+{
+    std::cout << "char: impossible\n";
+    std::cout << "int: impossible\n";
+    if (str == "-inff" || str == "+inff" || str == "inff" || str == "nanf")
+    {
+        std::cout << "float: " << str << '\n';
+        std::cout << "double: " << str.erase(str.size() - 1) << std::endl;
+    }
+    else
+    {
+        std::cout << "float: " << str << "f\n";
+        std::cout << "double: " << str << std::endl;
+    }
+}
+
+void    ScalarConverter::convert(const std::string str)
 {
     e_type  type = findType(str);
     
     switch (type)
     {
         case CHAR:
-            std::cout << "CHAR" << std::endl;
+            printChar(str);
             break;
         case INT:
-            std::cout << "INT" << std::endl;
+            printInt(str);
             break;
         case FLOAT:
-            std::cout << "FLOAT" << std::endl;
+            printFloatDouble(str);
             break;
         case DOUBLE:
-            std::cout << "DOUBLE" << std::endl;
+            printFloatDouble(str);
             break;
         case WORD:
-            std::cout << "WORD" << std::endl;
+            printWord(str);
             break;
         case NO_TYPE:
-            std::cout << "NO_TYPE" << std::endl;
+            std::cout << "conversion is impossible" << std::endl;
             break;
     }
-    // std::cout << "type = " << type << std::endl;
     (void)type;
 }

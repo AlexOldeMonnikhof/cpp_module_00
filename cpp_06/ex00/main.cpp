@@ -12,8 +12,6 @@ int main(int argc, char **argv)
         std::cerr << "Error: empty argument" << std::endl;
         return (1);
     }
-    double i =  -52424.;
-    // std::cout << i << std::endl;
     ScalarConverter::convert((const std::string)argv[1]);
     return (0);
 }
