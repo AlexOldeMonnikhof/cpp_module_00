@@ -35,7 +35,9 @@ std::string	ShrubberyCreationForm::getTarget() const
 void	ShrubberyCreationForm::executeForm() const
 {
 	std::ofstream	outputFile;
-	outputFile.open((this->getTarget()) + "_shrubbery");
+	std::string		fileName = this->getTarget() + "_shrubbery";
+
+	outputFile.open(fileName.c_str());
 	if (!outputFile.is_open())
 	{
 		std::cerr << "could not open file" << std::endl;

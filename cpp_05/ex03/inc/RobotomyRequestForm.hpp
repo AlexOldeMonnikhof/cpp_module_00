@@ -5,7 +5,6 @@
 
 # include <iostream>
 # include <fstream>
-# include <string>
 
 class RobotomyRequestForm : public AForm{
 private:
