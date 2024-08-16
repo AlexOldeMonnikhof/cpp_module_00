@@ -3,17 +3,18 @@
 
 class Data{
 private:
-    Data();
-    unsigned int    value;
+    int    value;
 public:
+    Data();
+    Data(int value);
+
     ~Data();
 
     Data(const Data& other);
 
     Data& operator=(const Data& other);
 
-    unsigned int    getValue() const;
-    void            setValue(unsigned int value);
+    int getValue() const;
 };
 
 #endif

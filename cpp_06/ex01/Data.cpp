@@ -1,8 +1,13 @@
 #include "Data.hpp"
 
-Data::Data()
+Data::Data() : value(42)
 {
+    
+}
 
+Data::Data(int value) : value(value)
+{
+    
 }
 
 Data::~Data()
@@ -22,12 +27,7 @@ Data& Data::operator=(const Data& other)
     return (*this);
 }
 
-unsigned int    Data::getValue() const
+int    Data::getValue() const
 {
     return value;
-}
-
-void    Data::setValue(unsigned int value)
-{
-    this->value = value;
 }

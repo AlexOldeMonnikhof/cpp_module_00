@@ -1,9 +1,8 @@
-NAME        = convert
-SRC     	= main.cpp ScalarConverter.cpp Serialization.cpp
+NAME        = serializer
+SRC     	= main.cpp Serializer.cpp Data.cpp
 OBJ_DIR		= obj
 OBJ     	= $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 FLAGS		= -Wall -Werror -Wextra -std=c++98
-FLAGS		=
 
 all: $(NAME)
 
