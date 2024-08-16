@@ -4,6 +4,7 @@
 # include <iostream>
 # include <limits.h>
 # include <float.h>
+# include <stdlib.h>
 
 typedef enum e_type{
     CHAR,

@@ -118,7 +118,7 @@ e_type findType(const std::string str)
 std::string getChar(int c)
 {
     if (std::isprint(c))
-        return ("\'" + std::string(1, c) + "\'");
+        return ("\'" + std::string(1, static_cast<char>(c)) + "\'");
     return "Non displayable";
 }
 

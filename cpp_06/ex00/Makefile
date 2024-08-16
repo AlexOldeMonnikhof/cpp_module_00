@@ -3,7 +3,6 @@ SRC     	= main.cpp ScalarConverter.cpp
 OBJ_DIR		= obj
 OBJ     	= $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
 FLAGS		= -Wall -Werror -Wextra -std=c++98
-FLAGS		=
 
 all: $(NAME)
 
