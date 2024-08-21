@@ -5,7 +5,7 @@ int main()
 {
     try
     {
-	    Bureaucrat 	john("John", 149);
+	    Bureaucrat 	john("John", 1);
 	    Intern		rick;
     
 	    AForm		*form1 = rick.makeForm("ShrubberyCreation", "garden");
