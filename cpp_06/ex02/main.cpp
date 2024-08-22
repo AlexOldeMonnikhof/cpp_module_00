@@ -19,19 +19,12 @@ Base* generate()
 
 void	identify(Base *p)
 {
-	try
-	{
-		if (dynamic_cast<A *>(p))
-			std::cout << "pointer points to A" << std::endl;
-		else if (dynamic_cast<B *>(p))
-			std::cout << "pointer points to B" << std::endl;
-		else if (dynamic_cast<C *>(p))
-			std::cout << "pointer points to C" << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (dynamic_cast<A *>(p))
+		std::cout << "points to A" << std::endl;
+	else if (dynamic_cast<B *>(p))
+		std::cout << "points to B" << std::endl;
+	else if (dynamic_cast<C *>(p))
+		std::cout << "points to C" << std::endl;
 }
 
 void	identify(Base &p)
@@ -39,11 +32,11 @@ void	identify(Base &p)
 	try
 	{
 		if (dynamic_cast<A *>(&p))
-			std::cout << "reference is of A" << std::endl;
+			std::cout << "references to A" << std::endl;
 		else if (dynamic_cast<B *>(&p))
-			std::cout << "reference is of B" << std::endl;
+			std::cout << "references to B" << std::endl;
 		else if (dynamic_cast<C *>(&p))
-			std::cout << "reference is of C" << std::endl;
+			std::cout << "references to C" << std::endl;
 	}
 	catch(const std::exception& e)
 	{
