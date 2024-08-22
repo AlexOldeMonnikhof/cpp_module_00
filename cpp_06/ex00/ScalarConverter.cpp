@@ -21,14 +21,14 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& other)
     return (*this);
 }
 
-bool    isChar(std::string str)
+bool    ScalarConverter::isChar(std::string str)
 {
     if (str.size() == 1 && !isdigit(str[0]))
         return true;
     return false;
 }
 
-bool    isInt(std::string str)
+bool    ScalarConverter::isInt(std::string str)
 {
     int i = 0;
     if (str[0] == '+' || str[0] == '-')
@@ -41,7 +41,7 @@ bool    isInt(std::string str)
     return true;
 }
 
-bool    isFloat(std::string str)
+bool    ScalarConverter::isFloat(std::string str)
 {
     int i = 0;
     int dotCount = 0;
@@ -66,7 +66,7 @@ bool    isFloat(std::string str)
     return true;
 }
 
-bool    isDouble(std::string str)
+bool    ScalarConverter::isDouble(std::string str)
 {
     int i = 0;
     int dotCount = 0;
@@ -89,7 +89,7 @@ bool    isDouble(std::string str)
 }
 
 // can all be 1 if statement ofcourse this just looks better
-bool    isWord(std::string str)
+bool    ScalarConverter::isWord(std::string str)
 {
     //floats
     if (str == "-inff" || str == "+inff" || str == "inff" || str == "nanf")
@@ -100,7 +100,7 @@ bool    isWord(std::string str)
     return false;
 }
 
-e_type findType(const std::string str)
+e_type ScalarConverter::findType(const std::string str)
 {
     if (isChar(str))
         return (CHAR);
@@ -115,14 +115,14 @@ e_type findType(const std::string str)
     return (NO_TYPE);
 }
 
-std::string getChar(int c)
+std::string ScalarConverter::getChar(int c)
 {
     if (std::isprint(c))
         return ("\'" + std::string(1, static_cast<char>(c)) + "\'");
     return "Non displayable";
 }
 
-void   printChar(const std::string str)
+void   ScalarConverter::printChar(const std::string str)
 {
     char c = str[0];
     std::cout << "char: \'" << c << "\'\n";
@@ -131,7 +131,7 @@ void   printChar(const std::string str)
     std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
 }
 
-void   printInt(const std::string str)
+void   ScalarConverter::printInt(const std::string str)
 {
     long long res = atoll(str.c_str());
     std::cout << "char: " << getChar(res) << '\n';
@@ -143,7 +143,7 @@ void   printInt(const std::string str)
     std::cout << "double: " << static_cast<double>(res) << ".0" << std::endl;
 }
 
-void   printFloatDouble(const std::string str)
+void   ScalarConverter::printFloatDouble(const std::string str)
 {
     double res = atof(str.c_str());
     std::cout << "char: " << getChar(res) << '\n';
@@ -163,7 +163,7 @@ void   printFloatDouble(const std::string str)
     }
 }
 
-void   printWord(std::string str)
+void   ScalarConverter::printWord(std::string str)
 {
     std::cout << "char: impossible\n";
     std::cout << "int: impossible\n";

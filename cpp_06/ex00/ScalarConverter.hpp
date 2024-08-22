@@ -25,22 +25,21 @@ public:
 
     ScalarConverter& operator=(const ScalarConverter& other);
 
+    static e_type   findType(const std::string str);
+    
+    static bool isChar(const std::string str);
+    static bool isInt(const std::string str);
+    static bool isFloat(const std::string str);
+    static bool isDouble(const std::string str);
+    static bool isWord(const std::string str);
+    
+    static std::string getChar(int c);
+    static void printInt(const std::string str);
+    static void printChar(const std::string str);
+    static void printFloatDouble(const std::string str);
+    static void printWord(std::string str);
     static void convert(const std::string str);
 
 };
-
-    e_type   findType(const std::string str);
-
-    bool isChar(const std::string str);
-    bool isInt(const std::string str);
-    bool isFloat(const std::string str);
-    bool isDouble(const std::string str);
-    bool isWord(const std::string str);
-
-    std::string getChar(int c);
-    void printInt(const std::string str);
-    void printChar(const std::string str);
-    void printFloatDouble(const std::string str);
-    void printWord(std::string str);
 
 #endif
