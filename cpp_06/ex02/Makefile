@@ -1,4 +1,4 @@
-NAME = serializer
+NAME = identify
 SRC = main.cpp Base.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
