@@ -1,25 +1,23 @@
-NAME        = iter
-SRC     	= main.cpp
-OBJ_DIR		= obj
-OBJ     	= $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))
-FLAGS		= -Wall -Werror -Wextra -std=c++98
+NAME = iter
+SRC = main.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98
+CC = c++
+HEADERS = iter.hpp
+
+OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	c++ -o $(NAME) $(OBJ)
+	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	c++ -g $(FLAGS) -c $< -o $@
-
-
-$(OBJ_DIR):
-	@mkdir -p obj
+%.o: %.cpp $(HEADERS)
+	$(CC) $(FLAGS) -o $@ -c $<
 
 clean:
-	rm -rf $(OBJ) $(OBJ_DIR)
+	rm -rf $(OBJ)
 
-fclean: clean
-	rm -rf $(NAME)
+fclean:
+	rm -rf $(OBJ) $(NAME)
 
 re: fclean all
