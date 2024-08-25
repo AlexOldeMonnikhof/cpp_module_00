@@ -3,7 +3,8 @@
 
 # include <iostream>
 
-template <typename T> void iter(T *array, int length, void(*function)(T&))
+template <typename T> 
+void iter(T *array, int length, void(*function)(T&))
 {
     if (!array || !function)
         return ;
@@ -11,7 +12,8 @@ template <typename T> void iter(T *array, int length, void(*function)(T&))
         function(array[i]);
 }
 
-template <typename T> void print(T& string)
+template <typename T> 
+void print(T& string)
 {
     std::cout << string << std::endl;
 }
