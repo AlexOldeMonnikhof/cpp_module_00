@@ -1,4 +1,4 @@
-NAME = template
+NAME = array_template
 SRC = main.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
