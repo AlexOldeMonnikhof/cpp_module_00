@@ -21,7 +21,13 @@ class Array
 		T&  operator[](unsigned int i);
     
         unsigned int    size() const;
+
+        class OutOfBoundsException : public std::exception{
+        public:
+            const char *what() const throw();
+        };
 };
 
+# include "Array.tpp"
 
 #endif
