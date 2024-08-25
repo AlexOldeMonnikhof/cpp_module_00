@@ -26,7 +26,7 @@ Array<T>::Array(const Array<T>& other)
     n = other.size();
     array = new T[n];
     for (size_t i = 0; i < n; i++)
-        array[i] = other.arr[i];
+        array[i] = other.array[i];
 }
 
 template <typename T>
