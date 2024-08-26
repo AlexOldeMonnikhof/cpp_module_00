@@ -2,6 +2,7 @@
 
 int main()
 {
+    std::cout << "---------------NO SPAN FOUND EXCEPTION---------------" << std::endl;
     try
     {
         unsigned int    size = 1;
@@ -15,7 +16,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-    std::cout << "------------------------------------------" << std::endl;
+    std::cout << "--------------------VECTOR SIZE 5--------------------" << std::endl;
     try
     {
         unsigned int    size = 5;
@@ -31,7 +32,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-    std::cout << "------------------------------------------" << std::endl;
+    std::cout << "----------------VECTOR FULL EXCEPTION----------------" << std::endl;
     try
     {
         unsigned int    size = 3;
@@ -47,7 +48,7 @@ int main()
     {
         std::cerr << e.what() << std::endl;
     }
-    std::cout << "------------------------------------------" << std::endl;
+    std::cout << "--------------------SIZE 15K VECTOR-------------------" << std::endl;
     try
     {
         unsigned int    size = 15000;
@@ -57,6 +58,22 @@ int main()
         // v.printVector();
         std::cout << "shortest span = " << v.shortestSpan() << std::endl;
         std::cout << "longest span = " << v.longestSpan() << std::endl;
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    std::cout << "------------------------SUBJECT----------------------" << std::endl;
+    try
+    {
+        Span sp = Span(5);
+        sp.addNumber(6);
+        sp.addNumber(3);
+        sp.addNumber(17);
+        sp.addNumber(9);
+        sp.addNumber(11);
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
     }
     catch (std::exception& e)
     {
