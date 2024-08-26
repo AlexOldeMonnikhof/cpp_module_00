@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <vector>
+# include <list>
 # include <algorithm>
 # include <exception>
 
@@ -13,7 +14,7 @@ class NothingFoundException : public std::exception
 };
 
 template <typename T>
-int easyfind(T& container, int value);
+void easyfind(T& container, int value);
 
 # include "easyfind.tpp"
 
