@@ -3,4 +3,12 @@
 
 # include <iostream>
 
+template <typename T>
+class MutantStack
+{
+
+};
+
+# include "MutantStack.tpp"
+
 #endif
