@@ -1,8 +1,8 @@
-NAME = mutantstack
-SRC = main.cpp
+NAME = btc
+SRC = main.cpp BitcoinExchange.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
-HEADERS = MutantStack.hpp
+HEADERS = BitcoinExchange.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
