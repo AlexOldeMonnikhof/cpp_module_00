@@ -22,7 +22,7 @@ void	printExchange(std::string date, std::map<std::string, float> &dataMap, floa
 	std::map<std::string, float>::iterator	it;
 	it = dataMap.lower_bound(date);
 	if (it == dataMap.begin() && it->first != date)
-		throw std::runtime_error("Error: date is before 2009-01-02");
+		throw std::runtime_error("Error: invalid date.");
     if (it->first != date)
 	{
         it--;
@@ -94,22 +94,19 @@ int	daysInMonth(int month, int year)
 void	checkDate(std::string date)
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
-		throw std::runtime_error("Error: date is not properly formatted.");
+		throw std::runtime_error("Error: invalid date.");
 	for (std::size_t i = 0; i != date.size(); i++)
 	{
 		if (i == 4 || i == 7)
 			continue;
 		if (!std::isdigit(date[i]))
-			throw std::runtime_error("Error: date is not properly formatted.");;
+			throw std::runtime_error("Error: invalid date.");;
 	}
 	int	day = std::atoi((date.substr(8, 2)).c_str());
 	int	month = std::atoi((date.substr(5, 2)).c_str());
 	int	year = std::atoi((date.substr(0, 4)).c_str());
-
-	if (month < 1 || month > 12 || year < 1)
-		throw std::runtime_error("Error: date is not properly formatted! => ");
-	if (day < 1 || day > daysInMonth(month, year))
-		throw std::runtime_error("Error: date is not properly formatted! => ");
+	if (day < 1 || day > daysInMonth(month, year) || month < 1 || month > 12 || year < 1)
+		throw std::runtime_error("Error: invalid date.");
 }
 
 std::string parseValue(std::string line, size_t pipe)
@@ -137,7 +134,7 @@ void    bitcoin_exchange(std::ifstream &input, std::map<std::string, float> &dat
 	std::string	value;
 	std::size_t	pipe;
 
-	while(getline(input, line))
+	while (getline(input, line))
 	{
 		pipe = line.find_first_of("|");
 		if (pipe == std::string::npos || line.size() < 12)
