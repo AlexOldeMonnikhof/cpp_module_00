@@ -12,9 +12,7 @@ void    calculate(std::string input, std::stack<double> &numbers)
 		if (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == 't' || c == '\v')
 			continue;
 		if (std::isdigit(c))
-        {
             numbers.push(c - '0');
-        }
         else if (c == '+')
         {
             if (numbers.size() < 2)
@@ -56,9 +54,7 @@ void    calculate(std::string input, std::stack<double> &numbers)
             numbers.push(second * top);
         }
         else
-        {
             throw std::runtime_error("Error: invalid input (invalid characters)");
-        }
 	}
     if (numbers.size() != 1)
         throw std::runtime_error("Error: invalid input (wrong amount of numbers or operators)");
