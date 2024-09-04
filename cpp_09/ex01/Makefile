@@ -1,4 +1,4 @@
-NAME = btc
+NAME = RPN
 SRC = main.cpp RPN.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
 CC = c++
