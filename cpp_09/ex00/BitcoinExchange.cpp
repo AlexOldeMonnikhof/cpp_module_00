@@ -2,22 +2,7 @@
 
 const char* whitespace = " \f\r\t\v";
 
-void    fillMap(std::map<std::string, float> &dataMap, std::ifstream &dataFile)
-{
-    std::string	line;
-	std::string	date;
-	std::string	exchangeRate;
-	while (getline(dataFile, line))
-	{
-		date = line.substr(0, line.find_first_of(","));
-		if (date == "date")
-			continue;
-		exchangeRate = line.substr(line.find_first_of(",") + 1, std::string::npos);
-		dataMap[date] = atof(exchangeRate.c_str());
-	}
-}
-
-void	printExchange(std::string date, std::map<std::string, float> &dataMap, float& valueFloat)
+static void    printExchange(std::string date, std::map<std::string, float> &dataMap, float& valueFloat)
 {
 	std::map<std::string, float>::iterator	it;
 	it = dataMap.lower_bound(date);
@@ -30,7 +15,7 @@ void	printExchange(std::string date, std::map<std::string, float> &dataMap, floa
 	std::cout << it->first << " => " << valueFloat <<  " = " << valueFloat * (*it).second << std::endl;
 }
 
-bool    isInt(std::string str)
+static bool    isInt(std::string str)
 {
     int i = 0;
     if (str[0] == '+' || str[0] == '-')
@@ -43,7 +28,7 @@ bool    isInt(std::string str)
     return true;
 }
 
-bool    isFloat(std::string str)
+static bool    isFloat(std::string str)
 {
     int i = 0;
     int dotCount = 0;
@@ -67,7 +52,7 @@ bool    isFloat(std::string str)
     return true;
 }
 
-void	checkBtcCount(std::string valueStr, float& btcCount)
+static void    checkBtcCount(std::string valueStr, float& btcCount)
 {
     if  (!isInt(valueStr) && !isFloat(valueStr))
 	{
@@ -79,7 +64,7 @@ void	checkBtcCount(std::string valueStr, float& btcCount)
 
 }
 
-int	daysInMonth(int month, int year)
+static int	daysInMonth(int month, int year)
 {
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
         return 31;
@@ -91,7 +76,7 @@ int	daysInMonth(int month, int year)
     return 28;
 }
 
-void	checkDate(std::string date)
+static void	checkDate(std::string date)
 {
 	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
 		throw std::runtime_error("Error: invalid date.");
@@ -109,7 +94,7 @@ void	checkDate(std::string date)
 		throw std::runtime_error("Error: invalid date.");
 }
 
-std::string parseValue(std::string line, size_t pipe)
+static std::string parseValue(std::string line, size_t pipe)
 {
     std::string value;
 	value = line.substr(pipe + 1, line.size());
@@ -118,13 +103,28 @@ std::string parseValue(std::string line, size_t pipe)
     return value;
 }
 
-std::string parseDate(std::string line, size_t pipe)
+static std::string parseDate(std::string line, size_t pipe)
 {
     std::string date;
 	date = line.substr(0, pipe);
     date.erase(0, date.find_first_not_of(whitespace));
     date.erase(date.find_last_not_of(whitespace) + 1, date.size());
     return date;
+}
+
+static void    fillMap(std::map<std::string, float> &dataMap, std::ifstream &dataFile)
+{
+    std::string	line;
+	std::string	date;
+	std::string	exchangeRate;
+	while (getline(dataFile, line))
+	{
+		date = line.substr(0, line.find_first_of(","));
+		if (date == "date")
+			continue;
+		exchangeRate = line.substr(line.find_first_of(",") + 1, std::string::npos);
+		dataMap[date] = atof(exchangeRate.c_str());
+	}
 }
 
 void    bitcoin_exchange(std::ifstream &input, std::map<std::string, float> &dataMap)

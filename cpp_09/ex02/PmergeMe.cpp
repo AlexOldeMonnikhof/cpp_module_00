@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
 
-void    checkArg(char *arg)
+static void    checkArg(char *arg)
 {
     std::string s(arg);
     s.erase(0, s.find_first_not_of(" \t\n\r\f\v"));
@@ -16,7 +16,7 @@ void    checkArg(char *arg)
 }
 
 //put integers from input into vector, integer must be positive else throw exception
-void    parse(std::vector<int> &v, std::deque<int> &d, char **argv)
+static void    parse(std::vector<int> &v, std::deque<int> &d, char **argv)
 {
     for (int i = 1; argv[i]; i++)
     {
@@ -26,7 +26,7 @@ void    parse(std::vector<int> &v, std::deque<int> &d, char **argv)
     }
 }
 
-void    checkDups(std::vector<int> &v)
+static void    checkDups(std::vector<int> &v)
 {
     std::sort(v.begin(), v.end());
     for (size_t i = 0; i < v.size() - 1; i++)
