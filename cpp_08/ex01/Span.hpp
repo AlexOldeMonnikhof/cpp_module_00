@@ -12,8 +12,8 @@ class Span
     private:
         Span();
         unsigned int N;
+        std::vector<int> v;
     public:
-        std::vector<int> v; // NEEDS TO BE PRIVATE!@@@@@@@@@@##$@
 
         Span(unsigned int N);
         Span(const Span& other);

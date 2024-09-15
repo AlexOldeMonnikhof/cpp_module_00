@@ -3,7 +3,6 @@
 
 # include <iostream>
 # include <stack>
-# include <iostream>
 # include <list>
 
 template <typename T>
@@ -23,7 +22,7 @@ class MutantStack : public std::stack<T>
         MutantStack& operator=(const MutantStack& other)
         {
             if (this != &other)
-                this.c = other.c;
+                this->c = other.c;
             return (*this);
         };
 
