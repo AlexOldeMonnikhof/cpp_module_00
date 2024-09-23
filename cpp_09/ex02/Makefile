@@ -1,7 +1,6 @@
 NAME = PmergeMe
 SRC = main.cpp PmergeMe.cpp
 FLAGS = -Wall -Wextra -Werror -std=c++98
-FLAGS = 
 CC = c++
 HEADERS = PmergeMe.hpp
 
