@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <stdexcept>
 
 const char* whitespace = " \f\r\t\v";
 
@@ -12,7 +13,7 @@ static void    printExchange(std::string date, std::map<std::string, float> &dat
 	{
         it--;
 	}
-	std::cout << it->first << " => " << valueFloat <<  " = " << valueFloat * (*it).second << std::endl;
+	std::cout << date << " => " << valueFloat <<  " = " << valueFloat * (*it).second << std::endl;
 }
 
 static bool    isInt(std::string str)
@@ -112,11 +113,12 @@ static std::string parseDate(std::string line, size_t pipe)
     return date;
 }
 
-static void    fillMap(std::map<std::string, float> &dataMap, std::ifstream &dataFile)
+void    fillMap(std::map<std::string, float> &dataMap, std::ifstream &dataFile)
 {
     std::string	line;
 	std::string	date;
 	std::string	exchangeRate;
+
 	while (getline(dataFile, line))
 	{
 		date = line.substr(0, line.find_first_of(","));
@@ -136,6 +138,8 @@ void    bitcoin_exchange(std::ifstream &input, std::map<std::string, float> &dat
 
 	while (getline(input, line))
 	{
+		if (line.empty())
+			continue;
 		pipe = line.find_first_of("|");
 		if (pipe == std::string::npos || line.size() < 12)
 		{
@@ -143,9 +147,9 @@ void    bitcoin_exchange(std::ifstream &input, std::map<std::string, float> &dat
 			continue;
 		}
         date = parseDate(line, pipe);
-		if (date == "date")
-			continue;
 		value = parseValue(line, pipe);
+		if (date == "date" && value == "value")
+			continue;
         if (value.size() == 0)
         {
             std::cout << "Error: no value given." << std::endl;

@@ -22,7 +22,7 @@ static void    checkArg(char *arg)
     }
     long long n = std::atoll(s.c_str());
     if (n < 1 || n > INT32_MAX)
-        throw std::runtime_error("Error: values must be positive integers");
+        throw std::runtime_error("Error: values must be integers");
 }
 
 static void    checkDups(std::vector<int> &v)
@@ -85,7 +85,7 @@ static void insertContainer(Container& c, int beg, int end)
     while (i < end)
     {
         int tmpValue = c[i + 1];
-       typename Container::iterator iterator = std::lower_bound(c.begin() + beg, c.begin() + i + 1, tmpValue);
+        typename Container::iterator iterator = std::lower_bound(c.begin() + beg, c.begin() + i + 1, tmpValue);
         if (iterator != c.begin() + i + 1)
             std::rotate(iterator, c.begin() + i + 1, c.begin() + i + 2);
         *iterator = tmpValue;
@@ -112,20 +112,13 @@ static void sortContainer(Container& c, int beg, int end)
 template <typename Container>
 static void printContainer(Container& c, int status)
 {
-    int count = 0;
     if (status == BEFORE)
         std::cout << "Before : ";
     if (status == AFTER)
         std::cout << "After  : ";
     for (typename Container::iterator iterator = c.begin(); iterator != c.end(); iterator++)
     {
-        if (count > 8)
-        {
-            std::cout << "[...]";
-            break ;
-        }
         std::cout << *iterator << " ";
-        count++;
     }
     std::cout << std::endl;
 }
@@ -133,7 +126,7 @@ static void printContainer(Container& c, int status)
 static void printTime(int argc, clock_t startTime, clock_t endTime, int container)
 {
     //million for microseconds
-    double time = 1000000.0 * (endTime - startTime) / CLOCKS_PER_SEC;
+    double time = double(endTime - startTime);
     std::cout << "Time to process a range of " << argc -1 << " element(s) with ";
     if (container == VECTOR)
         std::cout << "std::vector : ";

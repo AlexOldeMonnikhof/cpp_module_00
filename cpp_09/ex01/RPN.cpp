@@ -1,4 +1,5 @@
 #include "RPN.hpp"
+#include <stdexcept>
 
 void    calculate(std::string input, std::stack<double> &numbers)
 {
@@ -11,6 +12,8 @@ void    calculate(std::string input, std::stack<double> &numbers)
 
 		if (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == 't' || c == '\v')
 			continue;
+        if (input[i + 1] != ' ' && input[i + 1] != '\0')
+            throw std::runtime_error("Error: characters must be spaced apart!");
 		if (std::isdigit(c))
             numbers.push(c - '0');
         else if (c == '+')
@@ -38,6 +41,8 @@ void    calculate(std::string input, std::stack<double> &numbers)
             if (numbers.size() < 2)
                 throw std::runtime_error("Error: invalid input (wrong amount of numbers or operators)");
             top = numbers.top();
+            if (top == 0)
+                throw std::runtime_error("Error: division by zero");
             numbers.pop();
             second = numbers.top();
             numbers.pop();
